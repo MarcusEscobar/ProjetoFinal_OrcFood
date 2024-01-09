@@ -1,2 +1,2 @@
 # ProjetoFinal_OrcFood
-Projeto final do processo tainee da Orc'estra.
+Projeto final do processo trainee da Orc'estra.
