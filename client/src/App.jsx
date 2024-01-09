@@ -14,13 +14,14 @@ function App() {
   
 
   useEffect(() => {
-  const r =api.get('/').then((res)=> setInfo(res.data.message))
+  api.get('/').then((res)=> setInfo(res.data.message))
 
   }, []);
 
 
   return (
     <>
+     <p>estou no frontend</p>
      <p>{info}</p>
     </>
   )

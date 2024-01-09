@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(cors());
 
 app.get('/', (req, res) => {
-  return res.json({message: "Olá Mundo"})
+  return res.json({message: "Olá Mundo, essa mensagem vem do backend"})
 })
 
 app.listen(port, () => {
