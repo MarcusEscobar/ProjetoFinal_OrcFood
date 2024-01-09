@@ -9,19 +9,15 @@ import axios from "axios";
 function App() {
 
   const api = axios.create({
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:3000',
   });
   
   const [info, setInfo] = useState("...")
   
 
   useEffect(() => {
+  const r =api.get('/').then((res)=> setInfo(res.data.message))
 
-
-    fetch("/api",{
-      method: 'GET',
-      })
-      .then((res) => console.log(res))
   }, []);
 
 
