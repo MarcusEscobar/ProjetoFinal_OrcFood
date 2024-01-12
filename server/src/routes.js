@@ -1,12 +1,16 @@
 import { Router } from "express";
 
-import HelloController from "./controllers/HelloController";
+import auth from "./middlewares/auth";
+
+import SessionsController from "./controllers/SessionsController";
 import UsersController from "./controllers/UsersController";
 import CardapioController from "./controllers/CardapioController";
 
 const routes = new Router();
 
-routes.get('/hello', HelloController.index);
+routes.post('/sessions', SessionsController.create);
+
+// routes.use(auth)
 
 //RESTFull
 routes.get('/users', UsersController.index);
