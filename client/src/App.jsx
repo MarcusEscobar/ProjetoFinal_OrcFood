@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from "axios";
 
-
+import { Outlet } from "react-router-dom";
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -20,10 +21,14 @@ function App() {
 
 
   return (
-    <>
-     <p>estou no frontend</p>
-     <p>{info}</p>
-    </>
+    <div className="App">
+      <Navbar />
+      <div className='main_container'>
+        <Outlet />
+        <p>estou no frontend</p>
+        <p>{info}</p>
+      </div>
+    </div>
   )
 }
 

@@ -1,0 +1,19 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 2rem;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #d5d5d5;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    gap: 30px;
+    padding: 0 2rem;
+    flex: .5;
+}
+nav ul li .li {
+    text-decoration: none;
+}
