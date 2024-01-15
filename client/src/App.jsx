@@ -7,17 +7,17 @@ import Navbar from './components/Navbar';
 
 function App() {
 
-  const api = axios.create({
-    baseURL: 'http://localhost:3000',
-  });
+  // const api = axios.create({
+  //   baseURL: 'http://localhost:3000',
+  // });
   
   const [info, setInfo] = useState("...")
   
 
-  useEffect(() => {
-  api.get('/').then((res)=> setInfo(res.data.message))
+  // useEffect(() => {
+  // api.get('/').then((res)=> setInfo(res.data.message))
 
-  }, []);
+  // }, []);
 
 
   return (

@@ -1,12 +1,24 @@
 import React, {useState} from 'react'
+import { createItem } from '../services/api';
 
-const NovoItemPage = ({onNewItem}) => {
+const NovoItemPage = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
     const [category, setCategory] = useState("");
     const [serve, setServe] = useState(0);
+
+    const handleNewItem = async () => {
+        console.log("new item");
+        try {
+          await createItem(name, description, price, image, category, serve);
+        //   await loadData();
+        } catch (err) {
+          console.error(err);
+        //   setLoadingError(true);
+        }
+      };
 
   return (
     <div className='novo_item'>
@@ -53,11 +65,17 @@ const NovoItemPage = ({onNewItem}) => {
                 />
         </div>
         <div>
-            <p>Categoria:</p>
-            <select name="category" id="category">
-                {/* category.map() */}
+            <label htmlFor="category">Categoria:</label>
+            {/* <select name="category" id="category">
+                {/* category.map() *
                 <option value="category1" onChange={(e) => setCategory(e.target.value)}>1</option>
-            </select>
+            </select> */}
+            <input 
+                type="text"
+                name="category"
+                id="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)} />
         </div>
         <div>
             <label htmlFor="serve">Serve quantas pessoas:</label>
@@ -70,7 +88,7 @@ const NovoItemPage = ({onNewItem}) => {
                 />
         </div>
         <div>
-            <button onClick={() => onNewItem(name, description, price, image, category, serve)}>Adicionar</button>
+            <button onClick={handleNewItem}>Adicionar</button>
         </div>
     </div>
   )

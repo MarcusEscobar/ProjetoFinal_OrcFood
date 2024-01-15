@@ -33,14 +33,14 @@ class CardapioController {
       const { user_id, id } = req.params;
       const { name, description, price, image, category, serve } = req.body;
 
-      const admin_id = "12345678";
+      // const admin_id = "12345678";
 
       //   const admin = await User.findById(admin_id);
 
-      if (user_id !== admin_id) {
-        console.log("Não autorizado");
-        return res.status(404).json();
-      }
+      // if (user_id !== admin_id) {
+      //   console.log("Não autorizado");
+      //   return res.status(404).json();
+      // }
 
       const item = await Item.findById(id);
 
