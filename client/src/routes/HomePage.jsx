@@ -14,11 +14,12 @@ const HomePage = () => {
 
   const handleSearch = (query) => {
     console.log("query", query);
+    LoadData(query);
   };
 
-  const handleDeleteItem = () => {
-    console.log("Item deleted.");
-  };
+  // const handleDeleteItem = () => {
+  //   console.log("Item deleted.");
+  // };
 
   // const handleNewItem = async (name, description, price, image, category, serve) => {
   //   console.log("new item");
@@ -45,8 +46,8 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <Search onSearch={handleSearch} />
-      <Cardapio onDeleteItem={handleDeleteItem} />
-      <Carrinho onAddItemCarrinho={handleAddItemCarrinho} onRemoveItemCarrinho={handleRemoveItemCarrinho} />
+      <Cardapio />
+      <Carrinho onSearch={handleSearch} onAddItemCarrinho={handleAddItemCarrinho} onRemoveItemCarrinho={handleRemoveItemCarrinho} />
     </div>
   );
 };

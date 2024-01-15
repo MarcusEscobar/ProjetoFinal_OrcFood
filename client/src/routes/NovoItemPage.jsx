@@ -13,7 +13,7 @@ const NovoItemPage = () => {
         console.log("new item");
         try {
           await createItem(name, description, price, image, category, serve);
-        //   await loadData();
+        //    await loadData();
         } catch (err) {
           console.error(err);
         //   setLoadingError(true);

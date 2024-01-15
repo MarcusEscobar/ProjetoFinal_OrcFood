@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/components/Cardapio.css";
 
-import { getItens } from "../services/api";
+import { getItens, destroyItem } from "../services/api";
 
 const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
   const [cardapio, setCardapio] = useState([]);
@@ -12,7 +12,7 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
   const loadData = async (query = "") => {
     try {
       setLoading(true);
-      const response = await getItens();
+      const response = await getItens(query);
       setCardapio(response.data);
       setLoading(false);
     } catch (err) {
@@ -25,8 +25,16 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
     (async () => await loadData())();
   }, []);
 
-  const [newItem, setNewItem] = useState("");
+  const handleDeleteItem = async (item) => {
+    console.log("Item deleted.", item._id);
+    await destroyItem(item._id);
+    await loadData();
+  };
 
+  const handleSearch = (query) => {
+    console.log("query", query);
+    LoadData(query);
+  };
   // const handleNewItem = async (name, description, price, image, category, serve) => {
   //   console.log("new item");
   //   try {
@@ -71,7 +79,7 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
                 <img src="#" alt="#" />
               </picture>
               <h3 className="item_name">{item.name}</h3>
-              <button onClick={() => onDeleteItem(item)}>Apagar</button>
+              <button type="button" onClick={() => handleDeleteItem(item)}>Apagar</button>
             </li>
           );
         })}

@@ -4,7 +4,17 @@ import Item from "../models/Item";
 class CardapioController {
   async index(req, res) {
     try {
-      const cardapio = await Item.find();
+      const { q } = req.query;
+
+      let query = {};
+
+      if (q) {
+        query = { url: { $regex: q } }
+      }
+      const cardapio = await Item.find({
+        ...query
+      });
+      
       return res.status(200).json(cardapio);
     } catch (err) {
       console.log(err);
@@ -94,14 +104,14 @@ class CardapioController {
     try {
       const { user_id, id } = req.params;
 
-      const admin_id = "12345678";
+      // const admin_id = "12345678";
 
       //   const admin = await User.findById(admin_id);
 
-      if (user_id !== admin_id) {
-        console.log("Não autorizado");
-        return res.status(404).json();
-      }
+      // if (user_id !== admin_id) {
+      //   console.log("Não autorizado");
+      //   return res.status(404).json();
+      // }
 
       const item = await Item.findById(id);
 
