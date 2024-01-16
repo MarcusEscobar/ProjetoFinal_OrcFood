@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema(
         password: {
             type: String,
             required: true
+        },
+        scope:{
+            type:String,
+            required: true
         }
     },
     {

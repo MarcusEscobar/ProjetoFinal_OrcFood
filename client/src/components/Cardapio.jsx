@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../styles/components/Cardapio.css";
 
 import { getItens, destroyItem } from "../services/api";
+import { AuthContext } from "../contexts/auth";
 
 const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
+  const { user } = useContext(AuthContext)
+
   const [cardapio, setCardapio] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
@@ -66,9 +69,11 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
     <div className="cardapio">
       <div className="cardapio_title">
         <h2>Cardápio</h2>
+        {user.scope === "adm"? 
         <Link to="/newitem" className="btn_newitem">
           Adicionar item
-        </Link>
+        </Link>:<></>}
+        
       </div>
 
       <ul>
@@ -76,10 +81,11 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
           return (
             <li className="item" key={item._id}>
               <picture>
-                <img src="#" alt="#" />
+                <img src={item.image} alt="#" />
               </picture>
               <h3 className="item_name">{item.name}</h3>
-              <button type="button" onClick={() => handleDeleteItem(item)}>Apagar</button>
+              
+              {user.scope === "adm"?<button type="button" onClick={() => handleDeleteItem(item)}>Apagar</button>: <></>}
             </li>
           );
         })}

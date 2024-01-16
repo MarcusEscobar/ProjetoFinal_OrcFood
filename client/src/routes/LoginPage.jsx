@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "../styles/LoginPage.css";
+import { createSession } from '../services/api';
+import { AuthContext } from '../contexts/auth';
 
 const LoginPage = () => {
+    const {authenticated, user, login} = useContext(AuthContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
-    const handleLogin = () => {
+    const handleLogin = async() => {
         console.log('email', email);
         console.log('password', password);
-        console.log('login');
+        
+        login(email, password)
     }
 
   return (

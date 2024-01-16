@@ -1,11 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
+import { AuthContext } from "../contexts/auth";
+
+
 
 import Search from "../components/Search";
 import Cardapio from "../components/Cardapio";
 import Carrinho from "../components/Carrinho";
+import Navbar from "../components/Navbar";
 // import { createItem } from "../services/api";
 
 const HomePage = () => {
+  
+  const {authenticated, user} = useContext(AuthContext)
 
   const handleLogout = () => {
     console.log('logout');
@@ -45,6 +51,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+      <Navbar />
       <Search onSearch={handleSearch} />
       <Cardapio />
       <Carrinho onSearch={handleSearch} onAddItemCarrinho={handleAddItemCarrinho} onRemoveItemCarrinho={handleRemoveItemCarrinho} />

@@ -9,13 +9,12 @@ import CardapioController from "./controllers/CardapioController";
 const routes = new Router();
 
 routes.post('/sessions', SessionsController.create);
+routes.post('/users', UsersController.create);
 
-// routes.use(auth)
-
+routes.use(auth)
 //RESTFull
 routes.get('/users', UsersController.index);
 routes.get('/users/:id', UsersController.show);
-routes.post('/users', UsersController.create);
 routes.put('/users/:id', UsersController.update);
 routes.delete('/users/:id', UsersController.destroy);
 

@@ -31,7 +31,7 @@ class UsersController {
 
     async create(req, res) {
         try {
-            const { name, endereco, email, password } = req.body;
+            const { name, endereco, email, password, scope } = req.body;
 
             const user = await User.findOne({ email });
 
@@ -46,7 +46,8 @@ class UsersController {
                 name,
                 endereco,
                 email, 
-                password: encryptedPassword 
+                password: encryptedPassword ,
+                scope
             });
             return res.status(201).json(newUser);
             //201: objeto criado com sucesso.
