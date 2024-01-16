@@ -23,6 +23,23 @@ function AppRoutes() {
 
         return children
     }
+    const PrivateAdmin = ({children})=>{
+        const { authenticated, loading, user } = useContext(AuthContext)
+        
+        if(loading){
+            return <div className="loading" >Carregando...</div>
+        }
+
+        if(!authenticated){
+            return <Navigate to="/login"/>
+        }
+
+        if(user.scope !== "adm"){
+            return <Navigate to="/"/>
+        }
+
+        return children
+    }
 
     return(
         <BrowserRouter>
@@ -30,7 +47,7 @@ function AppRoutes() {
                 <Routes>
                     <Route path="/" element={<Private><HomePage/></Private>}></Route>
                     <Route path="/login" element={<LoginPage/>}></Route>
-                    <Route path="/newitem" element={<Private><NovoItemPage/></Private>}></Route>
+                    <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

@@ -29,9 +29,11 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
   }, []);
 
   const handleDeleteItem = async (item) => {
-    console.log("Item deleted.", item._id);
-    await destroyItem(item._id);
-    await loadData();
+    if(user === "adm"){
+      console.log("Item deleted.", item._id);
+      await destroyItem(item._id);
+      await loadData();
+    }
   };
 
   const handleSearch = (query) => {
@@ -85,7 +87,7 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
               </picture>
               <h3 className="item_name">{item.name}</h3>
               
-              {user.scope === "adm"?<button type="button" onClick={() => handleDeleteItem(item)}>Apagar</button>: <></>}
+              {user.scope === "adm"? <button type="button" onClick={() => handleDeleteItem(item)}>Apagar</button> : <></>}
             </li>
           );
         })}
