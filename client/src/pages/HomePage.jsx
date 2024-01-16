@@ -11,11 +11,7 @@ import Navbar from "../components/Navbar";
 
 const HomePage = () => {
   
-  const {authenticated, user} = useContext(AuthContext)
-
-  const handleLogout = () => {
-    console.log('logout');
-  }
+  
   
 
   const handleSearch = (query) => {

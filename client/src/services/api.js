@@ -8,6 +8,10 @@ export const createSession = async (email, password)=>{
     return api.post('/sessions', {email, password})
 }
 
+export const createUser = async( name, endereco, email, password,)=>{
+    return api.post('/users', { name, endereco, email, password, scope:"cliente"})
+}
+
 export const getItens = async (query) => {
     let url = '/cardapio/';
 

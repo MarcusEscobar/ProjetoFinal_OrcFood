@@ -1,17 +1,16 @@
 import React, { useContext, useState } from 'react';
 import "../styles/LoginPage.css";
-import { createSession } from '../services/api';
+
 import { AuthContext } from '../contexts/auth';
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+    const navigate = useNavigate()
     const {authenticated, user, login} = useContext(AuthContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
     const handleLogin = async() => {
-        console.log('email', email);
-        console.log('password', password);
-        
         login(email, password)
     }
 
@@ -43,6 +42,7 @@ const LoginPage = () => {
             <div className="actions">
                 <button type="button" onClick={handleLogin}>Entrar</button>
             </div>
+            <button onClick={()=>{navigate("/cadastro")}}>Cadastro</button>
         </form>
     </div>
   )

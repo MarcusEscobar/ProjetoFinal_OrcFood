@@ -1,8 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 
-import HomePage from "./routes/HomePage.jsx";
-import LoginPage from "./routes/LoginPage.jsx";
-import NovoItemPage from "./routes/NovoItemPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import NovoItemPage from "./pages/NovoItemPage.jsx";
+import CadastroPage from "./pages/CadastroPage.jsx";
 
 import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
 import { useContext } from "react";
@@ -47,6 +48,7 @@ function AppRoutes() {
                 <Routes>
                     <Route path="/" element={<Private><HomePage/></Private>}></Route>
                     <Route path="/login" element={<LoginPage/>}></Route>
+                    <Route path="/cadastro" element={<CadastroPage/>} ></Route>
                     <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
                 </Routes>
             </AuthProvider>

@@ -1,3 +1,5 @@
 import app from "./app";
 
-app.listen(5000);
+app.listen(5000, ()=>{
+    console.log("Running server")
+});
