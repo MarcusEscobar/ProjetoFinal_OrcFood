@@ -27,6 +27,8 @@ class CardapioController {
       const { id } = req.params;
       const item = await Item.findById(id);
 
+      console.log(item)
+      
       if (!item) {
         return res.status(404).json();
       }

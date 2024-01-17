@@ -5,10 +5,14 @@ import "../styles/components/Cardapio.css";
 import { getItens, destroyItem } from "../services/api";
 import { AuthContext } from "../contexts/auth";
 
+import ItemModal from "./ItemModal";
+
 const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
   const { user } = useContext(AuthContext)
 
   const [cardapio, setCardapio] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  // const [modalData, setModalData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
 
@@ -38,16 +42,6 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
     console.log("query", query);
     LoadData(query);
   };
-  // const handleNewItem = async (name, description, price, image, category, serve) => {
-  //   console.log("new item");
-  //   try {
-  //     await createItem(name, description, price, image, category, serve);
-  //     await loadData();
-  //   } catch (err) {
-  //     console.error(err);
-  //     setLoadingError(true);
-  //   }
-  // };
 
   if (loadingError) {
     return (
@@ -84,6 +78,12 @@ const Cardapio = ({ onNewItem, onDeleteItem, query }) => {
                 <img src={item.image} alt="#" />
               </picture>
               <h3 className="item_name">{item.name}</h3>
+              <div>
+                <Link to={`/cardapio/${item._id}`}>Detalhes</Link>
+                {/* <ItemModal isOpen={openModal}>
+                  <h1>{item.name}</h1>
+                </ItemModal> */}
+              </div>
               
               {user.scope === "adm"?<button type="button" onClick={() => handleDeleteItem(item)}>Apagar</button>: <></>}
             </li>

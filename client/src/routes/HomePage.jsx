@@ -23,20 +23,6 @@ const HomePage = () => {
     LoadData(query);
   };
 
-  // const handleDeleteItem = () => {
-  //   console.log("Item deleted.");
-  // };
-
-  // const handleNewItem = async (name, description, price, image, category, serve) => {
-  //   console.log("new item");
-  //   try {
-  //     await createItem(name, description, price, image, category, serve);
-  //     await loadData
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   // const atualizedPrice = item.price;
 
   const handleAddItemCarrinho = (item) => {

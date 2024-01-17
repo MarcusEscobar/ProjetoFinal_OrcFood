@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import HomePage from "./routes/HomePage.jsx";
 import LoginPage from "./routes/LoginPage.jsx";
 import NovoItemPage from "./routes/NovoItemPage.jsx";
+import ItemPage from "./routes/ItemPage.jsx";
 
 import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
 import { useContext } from "react";
@@ -31,6 +32,7 @@ function AppRoutes() {
                     <Route path="/" element={<Private><HomePage/></Private>}></Route>
                     <Route path="/login" element={<LoginPage/>}></Route>
                     <Route path="/newitem" element={<Private><NovoItemPage/></Private>}></Route>
+                    <Route path="/cardapio/:id" element={<ItemPage />} ></Route>
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

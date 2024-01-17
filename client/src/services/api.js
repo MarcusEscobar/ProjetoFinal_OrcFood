@@ -18,6 +18,11 @@ export const getItens = async (query) => {
     return api.get(url);
 };
 
+export const getItem = async (itemId) => {
+    const url = `/cardapio/${itemId}/`;
+    return api.get(url);
+};
+
 export const createItem = async (name, description, price, image, category, serve) => {
     const url = '/cardapio/';
     return api.post(url, {name: name, description: description, price: price, image: image, category: category, serve: serve});
