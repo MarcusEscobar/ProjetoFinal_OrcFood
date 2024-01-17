@@ -15,11 +15,11 @@ const Navbar = () => {
 
   return (
     <nav>
-        <h1>Nome</h1>
+        <h1>OrcFood</h1>
         <ul>
-            <li><Link to="/" className="li">Home</Link></li>
-            <li><Link to="/login" className="li">Login</Link></li>
-            <p>Olá {user.name}</p>
+            {/* <li><Link to="/" className="li">Home</Link></li> */}
+            {/* <li><Link to="/login" className="li">Login</Link></li> */}
+            <li>Olá {user.name}</li>
             <li><button type="button" onClick={handleLogout}>Logout</button></li>
         </ul>
     </nav>

@@ -5,11 +5,14 @@
 
 .cardapio .cardapio_title {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .cardapio ul {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
 }

@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { createUser } from "../services/api";
 import { AuthContext } from "../contexts/auth";
+import  "../styles/CadastroPage.css";
+import { useNavigate } from "react-router-dom";
 
 function CadastroPage() {
+    const navigate = useNavigate()
     const {login} = useContext(AuthContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -67,7 +70,10 @@ function CadastroPage() {
                     onChange={(e) => setEndereco(e.target.value)}
                     />
             </div>
-            <button type="submit" onClick={(e)=>{handleCadastro(e)}} >Cadastrar</button>
+            <div className="actions">
+                <button type="submit" onClick={(e)=>{handleCadastro(e)}} >Cadastrar</button>
+            </div>
+                <button onClick={()=>{navigate('/login')}} >Login</button>
 
         </form>
     </div>
