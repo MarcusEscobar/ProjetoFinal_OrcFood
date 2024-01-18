@@ -22,7 +22,7 @@ routes.get('/cardapio', CardapioController.index);
 routes.get('/cardapio/:key', CardapioController.index);
 routes.get('/cardapio/:id', CardapioController.show);
 routes.post('/cardapio/', CardapioController.create);
-routes.put('/cardapio/:id', CardapioController.update);
+routes.put('/cardapio', CardapioController.update);
 routes.delete('/cardapio/:id', CardapioController.destroy);
 
 export default routes;

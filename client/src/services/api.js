@@ -48,7 +48,7 @@ export const createItem = async (
 };
 
 export const updateItem = async (
-  itemId,
+  id,
   name,
   description,
   price,
@@ -56,16 +56,8 @@ export const updateItem = async (
   category,
   serve
 ) => {
-  const url = `/cardapio/${itemId}`;
-  return api.put(url, {
-    itemId,
-    name,
-    description,
-    price,
-    image,
-    category,
-    serve,
-  });
+  const url = `/cardapio`;
+  return api.put(url, { id ,name, description, price, image, category, serve });
 };
 
 export const destroyItem = async (itemId) => {

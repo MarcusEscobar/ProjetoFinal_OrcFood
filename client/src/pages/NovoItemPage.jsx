@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { createItem, updateItem } from "../services/api";
 
 const NovoItemPage = () => {
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -13,34 +14,42 @@ const NovoItemPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  let editItem = false;
 
+  const editItem = location.state.edit
+
+  
   console.log(location);
 
   useEffect(() => {
     if (location.state !== null) {
-      setName(location.state.name);
-      setDescription(location.state.description);
-      setPrice(location.state.price);
-      setImage(location.state.image);
-      setCategory(location.state.category);
-      setServe(location.state.serve);
+      setId(location.state.item._id)
+      setName(location.state.item.name);
+      setDescription(location.state.item.description);
+      setPrice(location.state.item.price);
+      setImage(location.state.item.image);
+      setCategory(location.state.item.category);
+      setServe(location.state.item.serve);
+      
     } 
   }, []);
 
-  let itemId = "";
+  console.log(id)
+/*
+let itemId = "";
 
-  if (location.state !== null) {
-    editItem = true;
-    itemId = location.state.id;
-    console.log("id", itemId);
-  }
+if (location.state !== null) {
+  editItem = true;
+  itemId = location.state.id;
+  console.log("id", itemId);
+}
+
+*/
 
   const handleUpdateItem = async () => {
     try {
-        console.log(itemId);
+
       await updateItem(
-        itemId,
+        id,
         name,
         description,
         price,

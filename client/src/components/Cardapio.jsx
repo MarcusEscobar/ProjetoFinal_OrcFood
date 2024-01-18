@@ -87,7 +87,7 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
               {console.log(item.name)}
               {user.scope === "adm"? (
                 <div>
-                  <Link to='/newitem' state={{ id: item._id, name: item.name, description: item.description, price: item.price, image: item.image, category: item.category, serve: item.serve }}>Editar</Link>
+                  <Link to='/newitem' state={{ item, edit: true }}>Editar</Link>
                   <button type="button" onClick={() => onDeleteItem(item)}>Apagar</button>
                 </div>
               ) : <></>}

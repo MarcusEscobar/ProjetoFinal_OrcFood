@@ -80,8 +80,7 @@ class CardapioController {
 
   async update(req, res) {
     try {
-        const {user_id, id} = req.params;
-        const { name, description, price, image, category, serve } = req.body;
+        const { id, name, description, price, image, category, serve } = req.body;
 
         const item = await Item.findById(id);
 
@@ -96,7 +95,7 @@ class CardapioController {
         //     return res.status(404).json();
         // }
 
-        await Item.updateOne({ name, description, price, image, category, serve });
+        await item.updateOne({ name, description, price, image, category, serve });
 
         return res.status(200).json();
 
