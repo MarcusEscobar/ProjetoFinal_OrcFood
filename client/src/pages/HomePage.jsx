@@ -1,7 +1,5 @@
-import React, {useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/auth";
-
-
 
 import Search from "../components/Search";
 import Cardapio from "../components/Cardapio";
@@ -9,29 +7,46 @@ import Carrinho from "../components/Carrinho";
 import Navbar from "../components/Navbar";
 // import { createItem } from "../services/api";
 
-const HomePage = () => {
-  
-  
-  
+import { getItens, destroyItem } from "../services/api";
 
-  const handleSearch = (query) => {
-    console.log("query", query);
-    LoadData(query);
+const HomePage = () => {
+  const { user } = useContext(AuthContext)
+
+  const [cardapio, setCardapio] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
+
+  const loadData = async (query = "") => {
+    try {
+      setLoading(true);
+      const response = await getItens(query);
+      setCardapio(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setLoadingError(true);
+    }
   };
 
-  // const handleDeleteItem = () => {
-  //   console.log("Item deleted.");
-  // };
+  useEffect(() => {
+    (async () => await loadData())();
+  }, []);
 
-  // const handleNewItem = async (name, description, price, image, category, serve) => {
-  //   console.log("new item");
-  //   try {
-  //     await createItem(name, description, price, image, category, serve);
-  //     await loadData
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+
+  const handleSearch = (query) => {
+    loadData(query);
+  };
+
+  const handleDeleteItem = async (item) => {
+    if(user === "adm"){
+      console.log("Item deleted.", item._id);
+      await destroyItem(item._id);
+      await loadData();
+    }
+    console.log("Item deleted.", item._id);
+      await destroyItem(item._id);
+      await loadData();
+  };
 
   // const atualizedPrice = item.price;
 
@@ -42,15 +57,34 @@ const HomePage = () => {
 
   const handleRemoveItemCarrinho = (item) => {
     console.log("-1", item_id);
-    // atualizedPrice -= item.price; 
+    // atualizedPrice -= item.price;
   };
+
+  if (loadingError) {
+    return (
+      <div className="loading">
+        Erro ao carregar o cardápio.
+      </div>
+    )
+  }
+
+  if (loading) {
+    return (
+      <div className="loading">
+        Carregando cardápio...
+      </div>
+    )
+  }
 
   return (
     <div className="homepage">
       <Navbar />
       <Search onSearch={handleSearch} />
-      <Cardapio />
-      <Carrinho onSearch={handleSearch} onAddItemCarrinho={handleAddItemCarrinho} onRemoveItemCarrinho={handleRemoveItemCarrinho} />
+      <Cardapio cardapio={cardapio} onLoadData={loadData} onDeleteItem={handleDeleteItem} />
+      <Carrinho
+        onAddItemCarrinho={handleAddItemCarrinho}
+        onRemoveItemCarrinho={handleRemoveItemCarrinho}
+      />
     </div>
   );
 };

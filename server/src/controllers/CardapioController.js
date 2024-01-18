@@ -9,11 +9,12 @@ class CardapioController {
       let query = {};
 
       if (q) {
-        query = { url: { $regex: q } }
+        query = { name: { $regex: q } }
       }
       const cardapio = await Item.find({
-        ...query
-      });
+        ...query}
+      );
+
       
       return res.status(200).json(cardapio);
     } catch (err) {
@@ -27,6 +28,7 @@ class CardapioController {
       const { id } = req.params;
       const item = await Item.findById(id);
 
+      console.log(item)
       if (!item) {
         return res.status(404).json();
       }
@@ -83,12 +85,16 @@ class CardapioController {
 
         const item = await Item.findById(id);
 
-        const admin_id = "12345678";
+        if (!item) {
+          return res.status(404).json();
+      }
 
-        if (user_id !== admin_id) {
-            console.log("Não autorizado.")
-            return res.status(404).json();
-        }
+        // const admin_id = "12345678";
+
+        // if (user_id !== admin_id) {
+        //     console.log("Não autorizado.")
+        //     return res.status(404).json();
+        // }
 
         await Item.updateOne({ name, description, price, image, category, serve });
 

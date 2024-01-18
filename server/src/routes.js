@@ -19,6 +19,7 @@ routes.put('/users/:id', UsersController.update);
 routes.delete('/users/:id', UsersController.destroy);
 
 routes.get('/cardapio', CardapioController.index);
+routes.get('/cardapio/:key', CardapioController.index);
 routes.get('/cardapio/:id', CardapioController.show);
 routes.post('/cardapio/', CardapioController.create);
 routes.put('/cardapio/:id', CardapioController.update);
