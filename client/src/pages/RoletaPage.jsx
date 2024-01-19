@@ -17,13 +17,18 @@ const RoletaPage = () => {
   const [p5, setP5] = useState("5");
   const [p6, setP6] = useState("6");
 
-  const [moedas, setMoedas] = useState(1);
-  const [tickets, setTickets] = useState(1);
+//   const handleEconomy = async () => {
+//     try {
+//       await updateEconomy(userId, moedas, tickets);
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
 
   return (
     <div className="main_container">
         <Navbar />
-         {user.scope === "adm" ? 
+         {user && user.scope === "adm" ? 
             <div className="editarPremios">
                 <div className="setarPremio">
                     <label htmlFor="p1">Prêmio 1:</label>
@@ -51,16 +56,19 @@ const RoletaPage = () => {
                 </div>
             </div>
          : <></>}
+         {user.moedas && user.tickets ? (
             <div>
-                <div className="moedas">
-                    <div className="div_moeda">$</div><p>: {moedas}</p>
-                </div>
-                <div className="tickets">
-                    <div className="div_ticket">Ticket</div><p>: {tickets}</p>
-                </div>
-            </div>   
+            <div className="moedas">
+                <div className="div_moeda">$</div>: <p>{user.moedas}</p> 
+            </div>
+            <div className="tickets">
+                <div className="div_ticket">Ticket</div>: <p>{user.tickets}</p>
+            </div>
+        </div>   
+         ) : <></>}
+            
         {/*   )}   */}
-      <Roleta p1={p1} p2={p2} p3={p3} p4={p4} p5={p5} p6={p6} moedas={moedas} tickets={tickets} />
+      <Roleta p1={p1} p2={p2} p3={p3} p4={p4} p5={p5} p6={p6} user={user} />
     </div>
   );
 };

@@ -14,6 +14,9 @@ import "../App.css";
 const HomePage = () => {
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+  console.log(user.moedas);
+
   const [cardapio, setCardapio] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
