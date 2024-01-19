@@ -6,6 +6,7 @@ import NovoItemPage from "./pages/NovoItemPage.jsx";
 import CadastroPage from "./pages/CadastroPage.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
 import ItemPage from "./pages/ItemPage.jsx";
+import RoletaPage from "./pages/RoletaPage.jsx";
 
 import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
 import { useContext } from "react";
@@ -56,6 +57,7 @@ function AppRoutes() {
                         <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
                         <Route path="/search" element={<SearchPage/>}></Route>
                         <Route path="/cardapio/:id" element={<ItemPage />}></Route>
+                        <Route path="/roleta" element={<RoletaPage />}></Route>
                     </Routes>
                 </AuthProvider>
             </Provider>
