@@ -28,10 +28,10 @@ function ProductCard({ item, deleteItem }) {
     <section className="product-card">
       {<img src={image} alt="product" className="card__image" />}
       <div className="card__infos">
+        <h2 className="card__title">{name}</h2>
         <h2 className="card__price">
           {formatCurrency(parseFloat(price), "BRL")}
         </h2>
-        <h2 className="card__title">{name}</h2>
       </div>
 
       <button

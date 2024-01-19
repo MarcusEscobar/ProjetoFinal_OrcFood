@@ -46,3 +46,10 @@
   max-width: 100px;
   max-height: 100px;
 }
+
+.btn_newitem{
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 600;
+    align-self: center;
+}
