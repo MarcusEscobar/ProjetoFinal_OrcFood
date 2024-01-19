@@ -56,7 +56,7 @@ function AppRoutes() {
                         <Route path="/cadastro" element={<CadastroPage/>} ></Route>
                         <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
                         <Route path="/search" element={<SearchPage/>}></Route>
-                        <Route path="/cardapio/:id" element={<ItemPage />}></Route>
+                        <Route path="/cardapio/:id" element={<Private><ItemPage /></Private>}></Route>
                         <Route path="/roleta" element={<Private><RoletaPage /></Private>}></Route>
                     </Routes>
                 </AuthProvider>

@@ -16,9 +16,6 @@ const NovoItemPage = () => {
   const location = useLocation();
 
 
-  
-  console.log(location);
-
   useEffect(() => {
     if (location.state !== null) {
       setId(location.state.item._id)
@@ -119,19 +116,16 @@ if (location.state !== null) {
         />
       </div>
       <div>
-        <label htmlFor="category">Categoria:</label>
-        {/* <select name="category" id="category">
-                {/* category.map() *
-                <option value="category1" onChange={(e) => setCategory(e.target.value)}>1</option>
-            </select> */}
-        <input
-          type="text"
-          name="category"
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
+        <label htmlFor="category">Categoria: </label>
+        <select onChange={(e)=>{setCategory(e.target.value)}} name="category" id="category">
+          <option value={'Entrada'}>Entrada</option>
+          <option value={'Prato principal'}>Prato principal</option>
+          <option value={'Sobremesa'}>Sobremesa</option>
+          <option value={'Bebida'}>Bebida</option>
+        </select>
       </div>
+
+
       <div>
         <label htmlFor="serve">Serve quantas pessoas:</label>
         <input

@@ -10,7 +10,8 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
-    const handleLogin = async() => {
+    const handleLogin = async(e) => {
+        e.preventDefault()
         login(email, password)
     }
 
@@ -41,9 +42,9 @@ const LoginPage = () => {
                 </div>
     
                 <div className="actions">
-                    <button type="button" onClick={handleLogin}>Entrar</button>
-    
-                <button onClick={()=>{navigate("/cadastro")}}>Cadastrar</button>
+                    <button onClick={(e)=>{handleLogin(e)}}>Entrar</button>
+        
+                    <button onClick={()=>{navigate("/cadastro")}}>Cadastrar</button>
                 </div>
             </form>
         </div>

@@ -26,7 +26,6 @@ const HomePage = () => {
       setLoading(true);
       const response = await getItens(query);
       setCardapio(response.data);
-      console.log(response.data);
       setLoading(false);
     } catch (err) {
       console.error(err);
