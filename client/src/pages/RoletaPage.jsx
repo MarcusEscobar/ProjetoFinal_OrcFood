@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../contexts/auth";
 import Roleta from "../components/Roleta/Roleta";
+import Navbar from "../components/Navbar";
 // import Navbar from "../components/Navbar";
 
 const RoletaPage = () => {
   
-    const { user } = useContext(AuthContext);
+    const { user } =  useContext(AuthContext);
+
     console.log(user);
 
   const [p1, setP1] = useState("1");
@@ -20,8 +22,8 @@ const RoletaPage = () => {
 
   return (
     <div className="main_container">
-        {/* <Navbar /> */}
-        {/* {user.scope === "adm" ? ( */}
+        <Navbar />
+         {user.scope === "adm" ? 
             <div className="editarPremios">
                 <div className="setarPremio">
                     <label htmlFor="p1">Prêmio 1:</label>
@@ -48,7 +50,7 @@ const RoletaPage = () => {
                     <input type="text" name="p6" id="p6" value={p6} onChange={(e) => setP6(e.target.value)} />
                 </div>
             </div>
-        {/*   ) : (  */}
+         : <></>}
             <div>
                 <div className="moedas">
                     <div className="div_moeda">$</div><p>: {moedas}</p>
