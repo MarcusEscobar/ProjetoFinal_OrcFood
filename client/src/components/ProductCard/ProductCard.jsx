@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 import { BiDetail } from "react-icons/bi";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 import formatCurrency from "../../../utils/formatCurrency";
 import AppContext from "../../contexts/AppContext";
@@ -17,9 +19,9 @@ function ProductCard({ item, deleteItem }) {
   const { cartItems, setCartItems } = useContext(AppContext);
 
   const handleAddCart = () => {
-    const itens = [...cartItems, item]
+    const itens = [...cartItems, item];
     setCartItems(itens);
-    localStorage.setItem('cartItems', JSON.stringify({cartItems: itens}))
+    localStorage.setItem("cartItems", JSON.stringify({ cartItems: itens }));
   };
 
   return (
@@ -40,22 +42,32 @@ function ProductCard({ item, deleteItem }) {
         <FaCartPlus />
       </button>
 
-      <Link to={`/cardapio/${_id}`}>
-        <BiDetail />
-      </Link>
+      <div className="product-options">
+        <Link to={`/cardapio/${_id}`} className="product-icons">
+          <BiDetail />
+        </Link>
 
-      {user.scope === "adm" ? (
-        <div>
-          <Link to="/newitem" state={{ item, edit: true }}>
-            Editar
-          </Link>
-          <button type="button" onClick={() => deleteItem(item)}>
-            Apagar
-          </button>
-        </div>
-      ) : (
-        <></>
-      )}
+        {user.scope === "adm" ? (
+          <div>
+            <Link
+              to="/newitem"
+              state={{ item, edit: true }}
+              className="product-icons"
+            >
+              <FaEdit />
+            </Link>
+            <button
+              type="button"
+              onClick={() => deleteItem(item)}
+              className="product-icons"
+            >
+              <MdDeleteForever />
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </section>
   );
 }
