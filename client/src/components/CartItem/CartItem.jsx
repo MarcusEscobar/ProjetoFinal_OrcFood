@@ -16,6 +16,7 @@ function CartItem({ data, index }) {
     
     const updatedItems = cartItems.filter((item, indexItem) => indexItem !== index);
 
+    localStorage.setItem('cartItems', JSON.stringify({cartItems:updatedItems}))
     setCartItems(updatedItems);
     
     

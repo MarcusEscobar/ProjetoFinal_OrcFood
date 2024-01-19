@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import "../styles/components/Navbar.css"
 import { AuthContext } from '../contexts/auth';
 import CartButton from './Cartbutton/CartButton';
+import AppContext from '../contexts/AppContext';
 
 const Navbar = () => {
 
   const { user, logout} = useContext(AuthContext)
+  const { setCartItems } = useContext(AppContext)
 
   const handleLogout = () => {
-    console.log('logout');
+    localStorage.setItem('cartItems', JSON.stringify({cartItems:[]}))
+    setCartItems([])
     logout()
   }
 

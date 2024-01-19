@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppContext from "./AppContext";
 import propTypes from "prop-types";
 
@@ -7,6 +7,14 @@ function Provider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isCartVisible, setIsCartVisible] = useState(false);
+
+  useEffect(() => {
+    const itens = JSON.parse(localStorage.getItem('cartItems'))
+    if(itens){
+      setCartItems(itens.cartItems)
+    }
+    
+  }, []);
 
 
   const value = {

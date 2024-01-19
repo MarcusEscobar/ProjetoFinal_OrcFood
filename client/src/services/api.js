@@ -25,7 +25,6 @@ export const getItens = async (query) => {
     url += `?q=${query}`;
   }
 
-  console.log('query', url);
 
   return api.get(url);
 };
@@ -62,5 +61,32 @@ export const updateItem = async (
 
 export const destroyItem = async (itemId) => {
   const url = `/cardapio/${itemId}`;
+  return api.delete(url);
+};
+
+
+export const createPedido = async (cliente, pedidos, status)=>{
+  const url = "/pedidos"
+  return api.post(url, {cliente, pedidos, status})
+}
+
+export const getPedido = async (id)=>{
+  const url = `/pedidos/${id}`
+  return api.get(url)
+}
+
+export const getPedidos = async ()=>{
+  const url = "/pedidos"
+  return api.get(url)
+
+}
+
+export const updatePedido = async (id,cliente, pedidos, status)=>{
+  const url = '/pedidos'
+  return api.put(url, {id,cliente, pedidos, status})
+}
+
+export const destroyPedido = async (itemId) => {
+  const url = `/pedidos/${itemId}`;
   return api.delete(url);
 };

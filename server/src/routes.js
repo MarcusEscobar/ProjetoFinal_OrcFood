@@ -5,6 +5,7 @@ import auth from "./middlewares/auth";
 import SessionsController from "./controllers/SessionsController";
 import UsersController from "./controllers/UsersController";
 import CardapioController from "./controllers/CardapioController";
+import PedidoController from "./controllers/PedidoController";
 
 const routes = new Router();
 
@@ -24,5 +25,11 @@ routes.get('/cardapio/:id', CardapioController.show);
 routes.post('/cardapio/', CardapioController.create);
 routes.put('/cardapio', CardapioController.update);
 routes.delete('/cardapio/:id', CardapioController.destroy);
+
+routes.get('/pedidos', PedidoController.index)
+routes.get('/pedidos/:id', PedidoController.show);
+routes.post('/pedidos', PedidoController.create);
+routes.put('/pedidos', PedidoController.update);
+routes.delete('/pedidos/:id', PedidoController.destroy);
 
 export default routes;

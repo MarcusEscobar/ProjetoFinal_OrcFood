@@ -4,9 +4,12 @@ import formatCurrency from "../../../utils/formatCurrency";
 
 import "./Cart.css";
 import AppContext from "../../contexts/AppContext";
+import { AuthContext } from "../../contexts/auth";
+import { createPedido } from "../../services/api";
 
 function Cart() {
-  const { cartItems, isCartVisible } = useContext(AppContext);
+  const { cartItems, isCartVisible, setCartItems } = useContext(AppContext);
+  const { user } = useContext(AuthContext)
 
 
 
@@ -14,9 +17,15 @@ function Cart() {
     return parseFloat(item.price) + acc;
   }, 0.0);
 
-  const handleFinalizarCompra = ()=>{
+  const handleFinalizarCompra = async ()=>{
+     const response = await createPedido(user, cartItems, "Pendente")
+     console.log(response)
+     localStorage.setItem('cartItems', JSON.stringify({cartItems:[]}))
+     setCartItems([])
 
-      console.log(cartItems)
+    
+
+     
   }
 
 

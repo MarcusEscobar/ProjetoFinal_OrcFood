@@ -14,7 +14,9 @@ function ProductCard({ data }) {
   const { cartItems, setCartItems } = useContext(AppContext);
 
   const handleAddCart = () => {
-    setCartItems([...cartItems, data]);
+    const itens = [...cartItems, data]
+    setCartItems(itens);
+    localStorage.setItem('cartItems', JSON.stringify({cartItems: itens}))
   };
 
   return (
