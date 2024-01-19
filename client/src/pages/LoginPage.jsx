@@ -14,38 +14,40 @@ const LoginPage = () => {
         login(email, password)
     }
 
-  return (
-    <div className="login">
-        <form>
-            <div className="field">
-                <label htmlFor="email">Email:</label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    />
-            </div>
-
-            <div className="field">
-                <label htmlFor="password">Senha:</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    />
-            </div>
-
-            <div className="actions">
-                <button type="button" onClick={handleLogin}>Entrar</button>
-            </div>
-            <button onClick={()=>{navigate("/cadastro")}}>Cadastro</button>
-        </form>
-    </div>
-  )
-}
-
-export default LoginPage
+    return (
+        <div className="login">
+            <img src="src\img\Logo.png" alt="Logo" />
+            <form>
+                <div className="field">
+                    <label htmlFor="email">Email</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        />
+                </div>
+    
+                <div className="field">
+                    <label htmlFor="password">Senha</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        />
+                </div>
+    
+                <div className="actions">
+                    <button type="button" onClick={handleLogin}>Entrar</button>
+    
+                <button onClick={()=>{navigate("/cadastro")}}>Cadastrar</button>
+                </div>
+            </form>
+        </div>
+      )
+    }
+    
+    export default LoginPage
