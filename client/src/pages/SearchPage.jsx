@@ -5,8 +5,7 @@ import { getItens } from "../services/api";
 
 import Navbar from "../components/Navbar";
 import Search from "../components/Search";
-import Cardapio from "../components/Cardapio";
-import Carrinho from "../components/Carrinho";
+import Cardapio from "../components/Cardapio/Cardapio";
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();

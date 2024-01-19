@@ -36,7 +36,7 @@ const ItemPage = () => {
     (async () => loadData())();
   }, []);
 
-  console.log(item);
+  //console.log(item);
 
   if (loadingError) {
     return (

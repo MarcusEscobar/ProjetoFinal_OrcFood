@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { createItem, updateItem } from "../services/api";
 
@@ -33,7 +33,7 @@ const NovoItemPage = () => {
     } 
   }, []);
 
-  console.log(id)
+ // console.log(id)
 /*
 let itemId = "";
 
