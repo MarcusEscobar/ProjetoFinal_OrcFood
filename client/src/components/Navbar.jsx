@@ -22,11 +22,12 @@ const Navbar = () => {
 
   return (
     <header>
-        <h1>OrcFood</h1>
+        <img src="/src/img/Icone.png" alt="Icone" width="50" height="45"/>
+        <h1>Afood</h1>
+        <h2>Olá, <span>{user.name}!</span></h2>
         <ul>
             <CartButton/>
-            <li>Olá {user.name}</li>
-            <li><button type="button" onClick={handleLogout}>Logout</button></li>
+            <li><button className='logout-btn' type="button" onClick={handleLogout}>Logout</button></li>
         </ul>
     </header>
   )
