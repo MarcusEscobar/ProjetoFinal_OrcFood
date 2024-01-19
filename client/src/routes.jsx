@@ -9,6 +9,7 @@ import ItemPage from "./pages/ItemPage.jsx";
 
 import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
 import { useContext } from "react";
+import Provider from "./contexts/Provider.jsx";
 
 
 function AppRoutes() {
@@ -46,16 +47,18 @@ function AppRoutes() {
 
     return(
         <BrowserRouter>
-            <AuthProvider>
-                <Routes>
-                    <Route path="/" element={<Private><HomePage/></Private>}></Route>
-                    <Route path="/login" element={<LoginPage/>}></Route>
-                    <Route path="/cadastro" element={<CadastroPage/>} ></Route>
-                    <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
-                    <Route path="/search" element={<SearchPage/>}></Route>
-                    <Route path="/cardapio/:id" element={<ItemPage />}></Route>
-                </Routes>
-            </AuthProvider>
+            <Provider>
+                <AuthProvider>
+                    <Routes>
+                        <Route path="/" element={<Private><HomePage/></Private>}></Route>
+                        <Route path="/login" element={<LoginPage/>}></Route>
+                        <Route path="/cadastro" element={<CadastroPage/>} ></Route>
+                        <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
+                        <Route path="/search" element={<SearchPage/>}></Route>
+                        <Route path="/cardapio/:id" element={<ItemPage />}></Route>
+                    </Routes>
+                </AuthProvider>
+            </Provider>
         </BrowserRouter>
 
     )

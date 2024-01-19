@@ -1,12 +1,18 @@
-nav {
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: .5rem 2rem;
     background-color: #f1f1f1;
     border-bottom: 1px solid #d5d5d5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+
 }
-nav ul {
+header ul {
     list-style: none;
     display: flex;
     justify-content: right;
@@ -14,6 +20,6 @@ nav ul {
     padding: 0 2rem;
     flex: .5;
 }
-nav ul li .li {
+header ul li .li {
     text-decoration: none;
 }

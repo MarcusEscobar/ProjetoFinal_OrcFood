@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/components/Navbar.css"
 import { AuthContext } from '../contexts/auth';
+import CartButton from './Cartbutton/CartButton';
 
 const Navbar = () => {
 
@@ -14,15 +15,14 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
+    <header>
         <h1>OrcFood</h1>
         <ul>
-            {/* <li><Link to="/" className="li">Home</Link></li> */}
-            {/* <li><Link to="/login" className="li">Login</Link></li> */}
+            <CartButton/>
             <li>Olá {user.name}</li>
             <li><button type="button" onClick={handleLogout}>Logout</button></li>
         </ul>
-    </nav>
+    </header>
   )
 }
 

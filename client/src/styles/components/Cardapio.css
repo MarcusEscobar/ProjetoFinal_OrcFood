@@ -27,4 +27,13 @@
 
 .cardapio ul .item picture {
     flex: 1;
+
+ 
+
+}
+
+.ImagensCardapio{
+    max-width: 100px;
+    max-height: 100px;
+
 }

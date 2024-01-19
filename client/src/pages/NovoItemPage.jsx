@@ -10,12 +10,11 @@ const NovoItemPage = () => {
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [serve, setServe] = useState(0);
+  const [edit, setEdit] = useState(false)
 
   const navigate = useNavigate();
   const location = useLocation();
 
-
-  const editItem = location.state.edit
 
   
   console.log(location);
@@ -29,6 +28,7 @@ const NovoItemPage = () => {
       setImage(location.state.item.image);
       setCategory(location.state.item.category);
       setServe(location.state.item.serve);
+      setEdit(location.state.edit)
       
     } 
   }, []);
@@ -143,7 +143,7 @@ if (location.state !== null) {
         />
       </div>
       <div>
-        {editItem ? (
+        {edit ? (
           <button onClick={handleUpdateItem}>Atualizar</button>
         ) : (
           <button onClick={handleNewItem}>Adicionar</button>

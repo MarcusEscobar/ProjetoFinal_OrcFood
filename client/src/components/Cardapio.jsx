@@ -4,63 +4,13 @@ import "../styles/components/Cardapio.css";
 
 // import { getItens, destroyItem } from "../services/api";
 import { AuthContext } from "../contexts/auth";
+import ProductCard from "./ProductCard/ProductCard";
 
 const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
   let location = useLocation();
 
   const { user } = useContext(AuthContext)
 
-  // const [cardapio, setCardapio] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // const [loadingError, setLoadingError] = useState(false);
-
-  // const loadData = async (query = "") => {
-  //   try {
-  //     setLoading(true);
-  //     const response = await getItens(query);
-  //     setCardapio(response.data);
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.error(err);
-  //     setLoadingError(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   (async () => await loadData())();
-  // }, []);
-
-  // const handleDeleteItem = async (item) => {
-  //   if(user === "adm"){
-  //     console.log("Item deleted.", item._id);
-  //     await destroyItem(item._id);
-  //     await loadData();
-  //   }
-  //   console.log("Item deleted.", item._id);
-  //     await destroyItem(item._id);
-  //     await loadData();
-  // };
-
-  // const handleSearch = (query) => {
-  //   console.log("query", query);
-  //   LoadData(query);
-  // };
-
-  // if (loadingError) {
-  //   return (
-  //     <div className="loading">
-  //       Erro ao carregar o cardápio.
-  //     </div>
-  //   )
-  // }
-
-  // if (loading) {
-  //   return (
-  //     <div className="loading">
-  //       Carregando cardápio...
-  //     </div>
-  //   )
-  // }
 
   return (
     <div className="cardapio">
@@ -77,14 +27,15 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
         {cardapio.map((item) => {
           return (
             <li className="item" key={item._id}>
+              <ProductCard key={item._id} data={item} />
               <picture>
-                <img src={item.image} alt="#" />
+                <img src={item.image} alt="#"  className="ImagensCardapio"/>
               </picture>
               <h3 className="item_name">{item.name}, {item._id}</h3>
 
               <Link to={`/cardapio/${item._id}`}>Detalhes</Link>
 
-              {console.log(item.name)}
+
               {user.scope === "adm"? (
                 <div>
                   <Link to='/newitem' state={{ item, edit: true }}>Editar</Link>

@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 // import { createItem } from "../services/api";
 
 import { getItens, destroyItem } from "../services/api";
+import Cart from "../components/Cart/Cart";
 
 const HomePage = () => {
   const { user } = useContext(AuthContext)
@@ -82,10 +83,7 @@ const HomePage = () => {
       <Navbar />
       <Search onSearch={handleSearch} />
       <Cardapio cardapio={cardapio} onLoadData={loadData} onDeleteItem={handleDeleteItem} />
-      <Carrinho
-        onAddItemCarrinho={handleAddItemCarrinho}
-        onRemoveItemCarrinho={handleRemoveItemCarrinho}
-      />
+      <Cart/>
     </div>
   );
 };
