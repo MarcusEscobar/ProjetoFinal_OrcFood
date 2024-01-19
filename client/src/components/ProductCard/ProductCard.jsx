@@ -26,7 +26,7 @@ function ProductCard({ item, deleteItem }) {
 
   return (
     <section className="product-card">
-      {<img src={image} alt="product" className="card__image" />}
+      {<img src={image} alt="product" className="card__image" width="90" height="150"/>}
       <div className="card__infos">
         <h2 className="card__title">{name}</h2>
         <h2 className="card__price">

@@ -35,6 +35,7 @@ function CartItem({ data, index }) {
           src={image}
           alt="imagem do produto"
           className="cart-item-image"
+          width="60" height="70"
         />
        
       <div className="cart-item-content">
