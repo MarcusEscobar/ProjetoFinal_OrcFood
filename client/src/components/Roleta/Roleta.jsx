@@ -3,7 +3,7 @@ import "./Roleta.css";
 
 import PedacoRoleta from "./PedacoRoleta";
 
-const Roleta = ({ p1, p2, p3, p4, p5, p6 }) => {
+const Roleta = ({ p1, p2, p3, p4, p5, p6, moedas, tickets }) => {
   const [comprimento, setComprimento] = useState(1);
   const [premio, setPremio] = useState("Clique em 'GIRAR'")
   const [rotation, setRotation] = useState(0);
@@ -18,13 +18,13 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6 }) => {
   };
 
   const girar = () => {
-    const novaRotacao = Math.floor(Math.random() * 210)+340;
+    const novaRotacao = Math.floor(Math.random()*210)+340;
     setPremio("Boa sorte!")
     setRotation(rotation + comprimento + novaRotacao);
   };
 
   const final = () => {
-    // barraRef.current.classList.toggle("parar");
+    barraRef.current.classList.toggle("parar");
     const graus = (rotation % 360 + 360) % 360;
     if (graus >= 0 && graus <= 59) {
         setPremio(p6); 

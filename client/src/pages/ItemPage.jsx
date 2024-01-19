@@ -3,13 +3,15 @@ import { getItem } from "../services/api";
 
 import Navbar from "../components/Navbar";
 
+import "../App.css";
+
 const ItemPage = () => {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
 
   const itemId = window.location.href.substring(31);
-  
+
   // console.log(itemId);
 
   const loadData = async () => {
@@ -39,32 +41,26 @@ const ItemPage = () => {
   console.log(item);
 
   if (loadingError) {
-    return (
-      <div className="loading">
-        Erro ao carregar o cardápio.
-      </div>
-    )
+    return <div className="loading">Erro ao carregar o cardápio.</div>;
   }
 
   if (loading) {
-    return (
-      <div className="loading">
-        Carregando página...
-      </div>
-    )
+    return <div className="loading">Carregando página...</div>;
   }
 
   return (
     <div>
       <Navbar />
-      <p>{item.name}</p>
-      <p>Categoria: {item.category}</p>
-      <p>{item.description}</p>
-      <picture>
-        <img src={item.image} alt={item.name} />
-      </picture>
-      <p>Preço: R${item.price}</p>
-      <p>Serve: {item.serve} pessoa(s).</p>
+      <div className="main_container">
+        <p>{item.name}</p>
+        <p>Categoria: {item.category}</p>
+        <p>{item.description}</p>
+        <picture>
+          <img src={item.image} alt={item.name} />
+        </picture>
+        <p>Preço: R${item.price}</p>
+        <p>Serve: {item.serve} pessoa(s).</p>
+      </div>
     </div>
   );
 };

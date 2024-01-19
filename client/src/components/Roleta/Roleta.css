@@ -100,7 +100,7 @@
     height: 200%;
     text-align: center;
     display: block;
-    transform: skewY(40deg) rotate(15deg);
+    transform: skewY(40deg) rotate(25deg);
     padding-top: 250px;
     cursor: pointer;
     font-weight: bold;
@@ -137,13 +137,13 @@
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
-    top: 30%;
+    top: 39.5%;
     font-weight: bold;
 }
 .barra1 {
     background-color: #444444;
     width: 250px;
-    height: 20px;
+    min-height: 20px;
     border-radius: 12px;
     padding: 4px;
     margin: 15px auto 10px;
@@ -172,6 +172,51 @@
     100% {
         width: 0%;
     }
+}
+
+.editarPremios {
+    position: absolute;
+    left: 2%;
+}
+
+.setarPremio {
+    margin-top: 10px;;
+}
+
+.moedas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    font-size: 2em;
+}
+.tickets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 20%;
+    left: 2%;
+    font-size: 2em;
+}
+.div_moeda {
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    border: 5px solid orange;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1px;
+}
+.div_ticket {
+    font-size: .5em;
+    width: 50px;
+    height: 25px;
+    background-color: rgb(58, 58, 255);
+    border: 3px solid blue;
 }
 
 /* .start-rotate {
