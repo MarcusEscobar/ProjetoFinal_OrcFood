@@ -11,6 +11,9 @@ const Navbar = () => {
   const { user, logout} = useContext(AuthContext)
   const { setCartItems } = useContext(AppContext)
 
+
+  
+
   const handleLogout = () => {
     localStorage.setItem('cartItems', JSON.stringify({cartItems:[]}))
     setCartItems([])
