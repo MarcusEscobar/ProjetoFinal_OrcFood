@@ -16,10 +16,10 @@ class SessionController {
             return res.status(401).json({ error: "Invalid user / password." });
         }
 
-        console.log(`user: ${user}`)
-        console.log(`userPass: ${user.password}`)
+        //console.log(`user: ${user}`)
+        //console.log(`userPass: ${user.password}`)
 
-        console.log(`pass by req: ${password}`)
+        //console.log(`pass by req: ${password}`)
 
         checkPassword(user, password).then((e)=>{
             if (!e) {
