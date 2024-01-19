@@ -9,12 +9,13 @@ import { createPedido } from "../../services/api";
 
 function Cart() {
   const { cartItems, isCartVisible, setCartItems } = useContext(AppContext);
+
   const { user } = useContext(AuthContext)
 
 
 
   const totalPrice = cartItems.reduce((acc, item) => {
-    return parseFloat(item.price) + acc;
+    return parseFloat(item.item.price * item.quatidade) + acc;
   }, 0.0);
 
   const handleFinalizarCompra = async ()=>{
@@ -38,7 +39,7 @@ function Cart() {
 
       <div className="cart-items">
         {cartItems.map((cartItem, index) => (
-          <CartItem key={cartItem._id+index} data={cartItem} index={ index } />
+          <CartItem key={cartItem.item._id+index} data={cartItem.item} q={cartItem.quatidade} index={ index } />
         ))}
       </div>
 

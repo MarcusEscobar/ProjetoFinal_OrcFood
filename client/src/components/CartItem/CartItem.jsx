@@ -6,24 +6,29 @@ import formatCurrency from "../../../utils/formatCurrency";
 import AppContext from "../../contexts/AppContext";
 import "./CartItem.css";
 
-function CartItem({ data, index }) {
+function CartItem({ data, q, index }) {
   const { cartItems, setCartItems } = useContext(AppContext);
   const { _id, name, price, image } = data;
 
-  
+
 
   const handleRemoveItem = () => {
-    
-    const updatedItems = cartItems.filter((item, indexItem) => indexItem !== index);
+    if(q ===1 ){
+      const updatedItems = cartItems.filter((item, indexItem) => indexItem !== index);
+  
+      localStorage.setItem('cartItems', JSON.stringify({cartItems:updatedItems}))
+      setCartItems(updatedItems);
+      
+    }else{
+      const newProduct = {item: data, quatidade: q-1}
+      let newArray = [...cartItems]
+      newArray[index] = newProduct
+      setCartItems(newArray);
+      localStorage.setItem("cartItems", JSON.stringify({ cartItems: newArray }));
 
-    localStorage.setItem('cartItems', JSON.stringify({cartItems:updatedItems}))
-    setCartItems(updatedItems);
+    }
     
     
-    
-   console.log(cartItems)
-   console.log(data)
-
 
   };
 
@@ -38,7 +43,7 @@ function CartItem({ data, index }) {
         />
        
       <div className="cart-item-content">
-        <h3 className="cart-item-title">{name}</h3>
+        <h3 className="cart-item-title">{name} x{q}</h3>
         <h3 className="cart-item-price">{formatCurrency(parseFloat(price), "BRL")}</h3>
 
         <button

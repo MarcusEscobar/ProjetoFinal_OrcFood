@@ -26,11 +26,12 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
       </div>
 
       <section className="products container">
-        {cardapio.map((product) => (
+        {cardapio.map((product, index) => (
           <ProductCard
             key={product._id}
             item={product}
             deleteItem={onDeleteItem}
+            index = {index}
           />
         ))}
       </section>

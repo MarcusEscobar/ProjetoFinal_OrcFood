@@ -1,11 +1,24 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import AppContext from "../../contexts/AppContext";
 import "./CartButton.css";
+import { useEffect } from "react";
 
 function CartButton() {
   const { cartItems, isCartVisible, setIsCartVisible } = useContext(AppContext);
+
+
+
+  const quantidadeItens = ()=>{
+    let quantidade =0
+    cartItems.map((e)=>{
+      quantidade+=e.quatidade
+    })
+    return quantidade
+  }
+
+
 
   return (
     <button
@@ -18,8 +31,8 @@ function CartButton() {
       <AiOutlineShoppingCart />
 
       {cartItems.length > 0 && (
-        <span className="cart-status">{cartItems.length}</span>
-      )}
+        <span className="cart-status">{quantidadeItens()}</span>
+        )}
     </button>
   );
 }

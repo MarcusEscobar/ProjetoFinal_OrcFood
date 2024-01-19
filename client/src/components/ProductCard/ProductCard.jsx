@@ -10,18 +10,31 @@ import formatCurrency from "../../../utils/formatCurrency";
 import AppContext from "../../contexts/AppContext";
 import propTypes from "prop-types";
 import "./ProductCard.css";
-function ProductCard({ item, deleteItem }) {
-  let location = useLocation();
+
+function ProductCard({ item, deleteItem, index }) {
+
 
   const { name, price, image, _id } = item;
   const { user } = useContext(AuthContext);
-
   const { cartItems, setCartItems } = useContext(AppContext);
-
+  
   const handleAddCart = () => {
-    const itens = [...cartItems, item];
-    setCartItems(itens);
-    localStorage.setItem("cartItems", JSON.stringify({ cartItems: itens }));
+    if(!cartItems.find((e)=> e.item._id === _id )){
+      const produto = {item, quatidade: 1}
+      const itens = [...cartItems, produto];
+      setCartItems(itens);
+      localStorage.setItem("cartItems", JSON.stringify({ cartItems: itens }));
+
+    }else{
+      const addItem = cartItems.find((e)=> e.item._id === _id )
+      const newProduct = {item: addItem.item, quatidade: addItem.quatidade+1}
+      let newArray = [...cartItems]
+      newArray[cartItems.indexOf(addItem)] = newProduct
+
+      setCartItems(newArray);
+      localStorage.setItem("cartItems", JSON.stringify({ cartItems: newArray }));
+    }
+  
   };
 
   return (
