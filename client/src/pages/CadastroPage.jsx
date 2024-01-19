@@ -28,9 +28,10 @@ function CadastroPage() {
 
     return ( 
     <div className="cadastro">
+        <img src="src\img\Logo.png" alt="Logo" />
         <form>
             <div className="field">
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email</label>
                 <input 
                     type="email" 
                     name="email" 
@@ -41,7 +42,7 @@ function CadastroPage() {
             </div>
 
             <div className="field">
-                <label htmlFor="password">Senha:</label>
+                <label htmlFor="password">Senha</label>
                 <input 
                     type="password" 
                     name="password" 
@@ -52,7 +53,7 @@ function CadastroPage() {
             </div>
 
             <div className="field">
-                <label htmlFor="name">Nome:</label>
+                <label htmlFor="name">Nome</label>
                 <input  
                     name="name" 
                     id="name"
@@ -62,7 +63,7 @@ function CadastroPage() {
             </div>
 
             <div className="field">
-                <label htmlFor="endereco">Endereço:</label>
+                <label htmlFor="endereco">Endereço</label>
                 <input  
                     name="endereco" 
                     id="endereco"
@@ -72,9 +73,9 @@ function CadastroPage() {
             </div>
             <div className="actions">
                 <button type="submit" onClick={(e)=>{handleCadastro(e)}} >Cadastrar</button>
-            </div>
+            
                 <button onClick={()=>{navigate('/login')}} >Login</button>
-
+            </div>
         </form>
     </div>
     );
