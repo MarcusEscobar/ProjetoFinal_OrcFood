@@ -12,7 +12,8 @@
   justify-content: space-between;
   transform: translate(110%, 0);
   transition: all 400ms ease;
-  background-color: aqua;
+  background-color: #ebe6e6;
+  box-shadow: 4px 4px 20px#aaaa;
 }
 
 .cart-items {
