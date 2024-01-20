@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MdOutlineAddCircleOutline } from "react-icons/md";
+import { CgPlayListAdd } from "react-icons/cg";
 import "./Cardapio.css";
 
 // import { getItens, destroyItem } from "../services/api";
@@ -15,10 +15,10 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
   return (
     <div className="cardapio">
       <div className="cardapio_title">
-        <h2>Cardápio</h2>
+        <h3>Cardápio</h3>
         {user.scope === "adm" ? (
           <Link to="/newitem" className="btn_newitem">
-            <MdOutlineAddCircleOutline /> Item
+            <CgPlayListAdd /> Novo Item
           </Link>
         ) : (
           <></>
