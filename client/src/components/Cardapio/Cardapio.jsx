@@ -1,16 +1,38 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CgPlayListAdd } from "react-icons/cg";
-import "./Cardapio.css";
-
-// import { getItens, destroyItem } from "../services/api";
 import { AuthContext } from "../../contexts/auth";
+
+import Filtro from "../Filtros/Filtro";
 import ProductCard from "../ProductCard/ProductCard";
+import "./Cardapio.css";
 
 const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
   let location = useLocation();
 
   const { user } = useContext(AuthContext);
+
+  const [filtrado, setFiltrado] = useState([]);
+  const [filtro, setFiltro] = useState(false);
+
+  const handleFiltragemCategory = (filtro) => {
+    setFiltrado(cardapio.filter((elemento) => elemento.category === filtro));
+    setFiltro(true);
+  };
+
+  const handleFiltragemPreco = (preco) => {
+    setFiltrado(
+      cardapio.filter((elemento) => parseFloat(elemento.price) <= preco)
+    );
+    setFiltro(true);
+  };
+
+  const handleFiltragemPessoas = (pessoas) => {
+    setFiltrado(
+      cardapio.filter((elemento) => parseFloat(elemento.serve) == pessoas)
+    );
+    setFiltro(true);
+  };
 
   return (
     <div className="cardapio">
@@ -25,37 +47,36 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
         )}
       </div>
 
-      <section className="products container">
-        {cardapio.map((product, index) => (
-          <ProductCard
-            key={product._id}
-            item={product}
-            deleteItem={onDeleteItem}
-            index = {index}
-          />
-        ))}
-      </section>
-      {/*
-      {cardapio.map((item) => {
-        <section className="item" key={item._id}>
-          <ProductCard key={item._id} data={item} />
+      <Filtro
+        filtraCategory={handleFiltragemCategory}
+        filtraPrice={handleFiltragemPreco}
+        filtraServe={handleFiltragemPessoas}
+        setFiltro={setFiltro}
+      />
 
-          {user.scope === "adm" ? (
-            <div>
-              <Link to="/newitem" state={{ item, edit: true }}>
-                Editar
-              </Link>
-              <button type="button" onClick={() => onDeleteItem(item)}>
-                Apagar
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
-          
-        </section>;
-      })}
-      */}
+      {filtro ? (
+        <section className="products container">
+          {filtrado.map((product, index) => (
+            <ProductCard
+              key={product._id}
+              item={product}
+              deleteItem={onDeleteItem}
+              index={index}
+            />
+          ))}
+        </section>
+      ) : (
+        <section className="products container">
+          {cardapio.map((product, index) => (
+            <ProductCard
+              key={product._id}
+              item={product}
+              deleteItem={onDeleteItem}
+              index={index}
+            />
+          ))}
+        </section>
+      )}
     </div>
   );
 };
