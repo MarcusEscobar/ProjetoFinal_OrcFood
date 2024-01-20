@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoIosSearch } from "react-icons/io";
 // import { useNavigate } from "react-router-dom";
 
 import "../styles/components/Search.css";
@@ -15,7 +16,7 @@ const Search = ({ onSearch }) => {
 
   return (
     <div className="search">
-      <label htmlFor="query">Pesquisar:</label>
+      <label htmlFor="query"><IoIosSearch /></label>
       <input
         type="text"
         name="query"
