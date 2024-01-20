@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
-import "../styles/LoginPage.css";
-
+import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/auth';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
+
+import "../styles/LoginPage.css";
 import 'react-toastify/dist/ReactToastify.css';
 
 

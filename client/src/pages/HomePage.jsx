@@ -64,7 +64,9 @@ const HomePage = () => {
     <div className="homepage">
       <Navbar />
       <div className="main_container">
-      <img src="src\img\banner.png" alt="banner" />
+        <picture className="banner_container">
+          <img src="src\img\banner.png" alt="banner" />
+        </picture>
         <Search onSearch={handleSearch} />
         <Cardapio
           cardapio={cardapio}
