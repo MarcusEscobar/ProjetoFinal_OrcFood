@@ -15,8 +15,22 @@ export const createUser = async (name, endereco, email, password) => {
     email,
     password,
     scope: "cliente",
+    economy: {
+      moedas: 3,
+      tickets: 3,
+    },
   });
 };
+
+export const updateUser = async (id, name, endereço, email, password) => {
+  const url = `/users/${id}`;
+  return api.put(url, { name, endereço, email, password })
+} 
+
+export const updateEconomy = async (id, moedas, tickets) => {
+  const url = `users/${id}`;
+  return api.put(url, { moedas, tickets })
+}
 
 export const getItens = async (query) => {
   let url = "/cardapio/";
@@ -24,7 +38,6 @@ export const getItens = async (query) => {
   if (query !== "") {
     url += `?q=${query}`;
   }
-
 
   return api.get(url);
 };
@@ -56,7 +69,7 @@ export const updateItem = async (
   serve
 ) => {
   const url = `/cardapio`;
-  return api.put(url, { id ,name, description, price, image, category, serve });
+  return api.put(url, { id, name, description, price, image, category, serve });
 };
 
 export const destroyItem = async (itemId) => {
@@ -75,11 +88,10 @@ export const getPedidoCliente = async (id)=>{
   return api.get(url)
 }
 
-export const getPedidos = async ()=>{
-  const url = "/pedidos"
-  return api.get(url)
-
-}
+export const getPedidos = async () => {
+  const url = "/pedidos";
+  return api.get(url);
+};
 
 export const updatePedido = async (id,idCliente,cliente, pedidos, status)=>{
   const url = '/pedidos'

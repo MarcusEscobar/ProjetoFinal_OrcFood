@@ -3,100 +3,110 @@ import User from "../models/User";
 import { createPasswordHash } from "../services/auth";
 
 class UsersController {
-    async index(req, res) {
-        try {
-            const users = await User.find();
-            return res.json(users);
-        } catch (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Internal server error." });
-        }
+  async index(req, res) {
+    try {
+      const users = await User.find();
+      return res.json(users);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error." });
     }
+  }
 
-    async show(req, res) {
-        try {
-            const { id } = req.params;
-            const user = await User.findById(id);
+  async show(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await User.findById(id);
 
-            if (!user) {
-                return res.status(404).json();
-            }
+      if (!user) {
+        return res.status(404).json();
+      }
 
-            return res.json(user);
-        } catch (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Internal server error." });
-        }
+      return res.json(user);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error." });
     }
+  }
 
-    async create(req, res) {
-        try {
-            const { name, endereco, email, password, scope } = req.body;
+  async create(req, res) {
+    try {
+      const { name, endereco, email, password, scope, moedas, tickets } = req.body;
 
-            const user = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-            if (user) {
-                return res.status(422).json({ message: `User ${email} already exists.` });
-            }
+      if (user) {
+        return res
+          .status(422)
+          .json({ message: `User ${email} already exists.` });
+      }
 
-            // Criptografa o password.
-            const encryptedPassword = await createPasswordHash(password)
+      // Criptografa o password.
+      const encryptedPassword = await createPasswordHash(password);
 
-            const newUser = await User.create({ 
-                name,
-                endereco,
-                email, 
-                password: encryptedPassword ,
-                scope
-            });
-            return res.status(201).json(newUser);
-            //201: objeto criado com sucesso.
-        } catch (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Internal server error." });
-        }
+      const newUser = await User.create({
+        name,
+        endereco,
+        email,
+        password: encryptedPassword,
+        scope,
+        moedas: 3,
+        tickets: 3,
+      });
+      return res.status(201).json(newUser);
+      //201: objeto criado com sucesso.
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error." });
     }
+  }
 
-    async update(req, res) {
-        try {
-            const { id } = req.params;
-            const { name, endereco, email, password } = req.body;
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+      const { name, endereco, email, password, moedas, tickets } = req.body;
 
-            const user = await User.findById(id);
+      const user = await User.findById(id);
 
-            if (!user) {
-                return res.status(404).json();
-            }
+      if (!user) {
+        return res.status(404).json();
+      }
 
-            const encryptedPassword = await createPasswordHash(password);
+      const encryptedPassword = await createPasswordHash(password);
 
-            await User.updateOne({ name, endereco, email, password: encryptedPassword });
+      await User.updateOne({
+        name,
+        endereco,
+        email,
+        password: encryptedPassword,
+        moedas,
+        tickets,
+      });
 
-            return res.status(200).json();
-
-        } catch (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Internal server error." });
-        }
+      return res.status(200).json();
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error." });
     }
+  }
 
-    async destroy(req, res) {
-        try {
-            const { id } = req.params;
-            const user = await User.findById(id);
+  async destroy(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await User.findById(id);
 
-            if (!user) {
-                return res.status(404).json();
-            }
+      if (!user) {
+        return res.status(404).json();
+      }
 
-            await user.deleteOne();
+      await user.deleteOne();
 
-            return res.status(200).json();
-        } catch (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Internal server error." });
-        }
+      return res.status(200).json();
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error." });
     }
+  }
 }
 
 export default new UsersController();
