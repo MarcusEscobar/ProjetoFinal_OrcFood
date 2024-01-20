@@ -4,6 +4,7 @@ import { getItem } from "../services/api";
 import Navbar from "../components/Navbar";
 
 import "../App.css";
+import "../styles/ItemPage.css";
 
 const ItemPage = () => {
   const [item, setItem] = useState([]);
@@ -49,17 +50,19 @@ const ItemPage = () => {
   }
 
   return (
-    <div>
+    <div className="item-page">
       <Navbar />
       <div className="main_container">
-        <p>{item.name}</p>
-        <p>Categoria: {item.category}</p>
-        <p>{item.description}</p>
-        <picture>
+      <div className="detalhes-img">
+      <picture >
           <img src={item.image} alt={item.name} />
-        </picture>
-        <p>Preço: R${item.price}</p>
-        <p>Serve: {item.serve} pessoa(s).</p>
+        </picture>    
+        </div>    
+        <h4>{item.name}</h4>
+        <h6> {item.category}</h6>
+        <p>Serve {item.serve} pessoa(s)</p>
+        <p>{item.description}</p>
+        <h5> R${item.price}</h5>
       </div>
     </div>
   );
