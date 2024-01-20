@@ -30,6 +30,15 @@ body,
     margin: 0 auto;
 }
 
+.banner_container {
+    width: 100%;
+}
+
+.banner_container img {
+    width: 100%;
+    height: auto;
+}
+
 a{
     text-decoration: none;
     color: blue;

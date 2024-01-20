@@ -11,6 +11,7 @@ import RoletaPage from "./pages/RoletaPage.jsx";
 import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
 import { useContext } from "react";
 import Provider from "./contexts/Provider.jsx";
+import PedidosPage from "./pages/PedidosPage.jsx";
 
 
 function AppRoutes() {
@@ -58,6 +59,7 @@ function AppRoutes() {
                         <Route path="/search" element={<SearchPage/>}></Route>
                         <Route path="/cardapio/:id" element={<Private><ItemPage /></Private>}></Route>
                         <Route path="/roleta" element={<Private><RoletaPage /></Private>}></Route>
+                        <Route path='/pedidos' element={<Private><PedidosPage/></Private>} ></Route>
                     </Routes>
                 </AuthProvider>
             </Provider>

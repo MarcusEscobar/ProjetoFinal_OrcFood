@@ -26,6 +26,7 @@ const HomePage = () => {
       setLoading(true);
       const response = await getItens(query);
       setCardapio(response.data);
+      console.log(response.data);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -63,7 +64,9 @@ const HomePage = () => {
     <div className="homepage">
       <Navbar />
       <div className="main_container">
-      <picture className="banner_container"><img src="src\img\banner.png" alt="banner" width="1920" height="630"/></picture>
+        <picture className="banner_container">
+          <img src="src\img\banner.png" alt="banner" />
+        </picture>
         <Search onSearch={handleSearch} />
         <Cardapio
           cardapio={cardapio}
