@@ -27,7 +27,7 @@ routes.put('/cardapio', CardapioController.update);
 routes.delete('/cardapio/:id', CardapioController.destroy);
 
 routes.get('/pedidos', PedidoController.index)
-routes.get('/pedidos/:id', PedidoController.show);
+routes.get('/pedidos_cliente/:id', PedidoController.show);
 routes.post('/pedidos', PedidoController.create);
 routes.put('/pedidos', PedidoController.update);
 routes.delete('/pedidos/:id', PedidoController.destroy);

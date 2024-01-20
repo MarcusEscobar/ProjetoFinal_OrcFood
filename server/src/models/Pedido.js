@@ -2,15 +2,16 @@ import mongoose from "mongoose";
 
 const PedidoSchema = new mongoose.Schema(
   {
+    idCliente:{
+      type: String,
+      require: true
+    },
     cliente: {
       type: Object,
       required: true,
-      index: {
-        unique: true,
-      },
     },
     pedidos: {
-      type: Array,
+      type: Object,
       required: true,
     },
     status: {

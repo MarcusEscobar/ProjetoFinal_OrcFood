@@ -77,25 +77,26 @@ export const destroyItem = async (itemId) => {
   return api.delete(url);
 };
 
-export const createPedido = async (cliente, pedidos, status) => {
-  const url = "/pedidos";
-  return api.post(url, { cliente, pedidos, status });
-};
 
-export const getPedido = async (id) => {
-  const url = `/pedidos/${id}`;
-  return api.get(url);
-};
+export const createPedido = async ( idCliente ,cliente, pedidos, status)=>{
+  const url = "/pedidos"
+  return api.post(url, {idCliente ,cliente, pedidos, status})
+}
+
+export const getPedidoCliente = async (id)=>{
+  const url = `/pedidos_cliente/${id}`
+  return api.get(url)
+}
 
 export const getPedidos = async () => {
   const url = "/pedidos";
   return api.get(url);
 };
 
-export const updatePedido = async (id, cliente, pedidos, status) => {
-  const url = "/pedidos";
-  return api.put(url, { id, cliente, pedidos, status });
-};
+export const updatePedido = async (id,idCliente,cliente, pedidos, status)=>{
+  const url = '/pedidos'
+  return api.put(url, {id, idCliente, cliente, pedidos, status})
+}
 
 export const destroyPedido = async (itemId) => {
   const url = `/pedidos/${itemId}`;
