@@ -1,11 +1,13 @@
 import { useState } from "react";
+import "./Filtro.css"
 
-function Filtro({ filtraCategory, filtraPrice, filtraServe, setFiltro }) {
+function Filtro({ isFiltroVisible, filtraCategory, filtraPrice, filtraServe, setFiltro }) {
   const [preco, setPreco] = useState(10);
   const [pessoas, setPessoas] = useState(1);
+  //const [isFiltroVisible, setIsFiltroVisible] = useState(false)
 
   return (
-    <div className="filtros">
+    <div className={`filtro ${isFiltroVisible ? "filtro--active" : ""}`}>
       <button onClick={() => setFiltro(false)}>Desfiltrar</button>
       <button onClick={() => filtraCategory("Entrada")}>
         Filtrar por Entradas

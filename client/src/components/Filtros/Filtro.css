@@ -1,0 +1,7 @@
+.filtro {
+  display: none;
+}
+
+.filtro--active {
+  display: flex;
+}
