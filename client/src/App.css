@@ -34,3 +34,12 @@ a{
     text-decoration: none;
     color: blue;
 }
+
+.banner_container {
+    width: 100%;
+}
+
+.banner_container img {
+    width: 100%;
+    height: auto;
+}

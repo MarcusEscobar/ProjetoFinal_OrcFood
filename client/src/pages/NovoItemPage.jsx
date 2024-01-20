@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { createItem, updateItem } from "../services/api";
+import  "../styles/NovoItemPage.css";
+import Navbar from "../components/Navbar";
 
 const NovoItemPage = () => {
   const [id, setId] = useState("");
@@ -73,8 +75,9 @@ if (location.state !== null) {
 
   return (
     <div className="novo_item">
+    <Navbar />
       <div>
-        <label htmlFor="name">Nome:</label>
+        <label htmlFor="name">Nome</label>
         <input
           type="text"
           name="name"
@@ -85,7 +88,7 @@ if (location.state !== null) {
         />
       </div>
       <div>
-        <p>Descrição:</p>
+        <p>Descrição</p>
         <textarea
           name="description"
           id="description"
@@ -94,7 +97,7 @@ if (location.state !== null) {
         />
       </div>
       <div>
-        <label htmlFor="price">Preço:</label>
+        <label htmlFor="price">Preço</label>
         <input
           type="number"
           name="price"
@@ -105,7 +108,7 @@ if (location.state !== null) {
         />
       </div>
       <div>
-        <label htmlFor="image">Imagem:</label>
+        <label htmlFor="image">Imagem</label>
         <input
           type="text"
           name="image"
@@ -116,7 +119,7 @@ if (location.state !== null) {
         />
       </div>
       <div>
-        <label htmlFor="category">Categoria: </label>
+        <label htmlFor="category">Categoria </label>
         <select onChange={(e)=>{setCategory(e.target.value)}} name="category" id="category">
           <option value={'Entrada'}>Entrada</option>
           <option value={'Prato principal'}>Prato principal</option>
@@ -127,7 +130,7 @@ if (location.state !== null) {
 
 
       <div>
-        <label htmlFor="serve">Serve quantas pessoas:</label>
+        <label htmlFor="serve">Serve quantas pessoas</label>
         <input
           type="number"
           name="serve"
@@ -136,14 +139,13 @@ if (location.state !== null) {
           onChange={(e) => setServe(e.target.value)}
         />
       </div>
-      <div>
+
         {edit ? (
-          <button onClick={handleUpdateItem}>Atualizar</button>
+          <button className="btn-item" onClick={handleUpdateItem}>Atualizar</button>
         ) : (
-          <button onClick={handleNewItem}>Adicionar</button>
+          <button className="btn-item" onClick={handleNewItem}>Adicionar</button>
         )}
       </div>
-    </div>
   );
 };
 
