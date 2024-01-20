@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import CupomComprar from "../components/CupomComprar";
 import { AuthContext } from "../contexts/auth";
 
@@ -18,10 +19,10 @@ const CuponsPage = () => {
 
   useEffect(() =>  {
     localStorage.setItem('moedas', moedas.toString());
-    localStorage.setItem('c10', user.cupons.c10.toString());
-    localStorage.setItem('c20', user.cupons.c20.toString());
-    localStorage.setItem('c30', user.cupons.c30.toString());
-  }, [moedas]);
+    localStorage.setItem('c10', user.cupons.c10);
+    localStorage.setItem('c20', user.cupons.c20);
+    localStorage.setItem('c30', user.cupons.c30);
+  }, [moedas, user.cupons.c10, user.cupons.c20, user.cupons.c30]);
 
   console.log(user);
 
