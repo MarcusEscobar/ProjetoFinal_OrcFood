@@ -31,7 +31,8 @@ class UsersController {
 
   async create(req, res) {
     try {
-      const { name, endereco, email, password, scope, moedas, tickets } = req.body;
+      const { name, endereco, email, password, scope } =
+        req.body;
 
       const user = await User.findOne({ email });
 
@@ -52,6 +53,11 @@ class UsersController {
         scope,
         moedas: 3,
         tickets: 3,
+        cupons: {
+          c10: 0,
+          c20: 0,
+          c30: 0,
+        },
       });
       return res.status(201).json(newUser);
       //201: objeto criado com sucesso.
@@ -64,7 +70,17 @@ class UsersController {
   async update(req, res) {
     try {
       const { id } = req.params;
-      const { name, endereco, email, password, moedas, tickets } = req.body;
+      const {
+        name,
+        endereco,
+        email,
+        password,
+        moedas,
+        tickets,
+        c10,
+        c20,
+        c30,
+      } = req.body;
 
       const user = await User.findById(id);
 
@@ -74,18 +90,23 @@ class UsersController {
 
       const encryptedPassword = await createPasswordHash(password);
 
-      await User.updateOne({
+      await user.updateOne({
         name,
         endereco,
         email,
         password: encryptedPassword,
         moedas,
         tickets,
+        cupons: {
+          c10,
+          c20,
+          c30,
+        },
       });
 
       return res.status(200).json();
     } catch (err) {
-      console.error(err);
+      console.log(err);
       return res.status(500).json({ error: "Internal server error." });
     }
   }

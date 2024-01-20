@@ -15,22 +15,20 @@ export const createUser = async (name, endereco, email, password) => {
     email,
     password,
     scope: "cliente",
-    economy: {
-      moedas: 3,
-      tickets: 3,
+    moedas: 3,
+    tickets: 3,
+    cupons: {
+      c10: 0,
+      c20: 0,
+      c30: 0,
     },
   });
 };
 
-export const updateUser = async (id, name, endereço, email, password) => {
+export const updateUser = async (id, name, endereço, email, password, moedas, tickets, c10, c20, c30) => {
   const url = `/users/${id}`;
-  return api.put(url, { name, endereço, email, password })
+  return api.put(url, { id, name, endereço, email, password, moedas, tickets, c10, c20, c30 })
 } 
-
-export const updateEconomy = async (id, moedas, tickets) => {
-  const url = `users/${id}`;
-  return api.put(url, { moedas, tickets })
-}
 
 export const getItens = async (query) => {
   let url = "/cardapio/";

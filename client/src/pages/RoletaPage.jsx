@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/auth";
 import Roleta from "../components/Roleta/Roleta";
 import Navbar from "../components/Navbar";
@@ -16,14 +16,6 @@ const RoletaPage = () => {
   const [p4, setP4] = useState("4");
   const [p5, setP5] = useState("5");
   const [p6, setP6] = useState("6");
-
-//   const handleEconomy = async () => {
-//     try {
-//       await updateEconomy(userId, moedas, tickets);
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
 
   return (
     <div className="main_container">
@@ -56,16 +48,6 @@ const RoletaPage = () => {
                 </div>
             </div>
          : <></>}
-         {user.moedas && user.tickets ? (
-            <div>
-            <div className="moedas">
-                <div className="div_moeda">$</div>: <p>{user.moedas}</p> 
-            </div>
-            <div className="tickets">
-                <div className="div_ticket">Ticket</div>: <p>{user.tickets}</p>
-            </div>
-        </div>   
-         ) : <></>}
             
         {/*   )}   */}
       <Roleta p1={p1} p2={p2} p3={p3} p4={p4} p5={p5} p6={p6} user={user} />

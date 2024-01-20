@@ -21,17 +21,19 @@ class SessionController {
                 return res.status(401).json({ error: "Invalid user / password." });
             }
     
-            const { id, name, endereco, scope, moedas, tickets } = user;
+            const { id, name, endereco, scope, moedas, tickets, cupons } = user;
     
             return res.json({
                 user: {
                     id,
                     email,
+                    password,
                     name,
                     endereco,
                     scope,
                     moedas,
-                    tickets
+                    tickets,
+                    cupons
                 },
                 token:jwt.sign({ id }, authConfig.secret, {
                     expiresIn: authConfig.expiresIn,

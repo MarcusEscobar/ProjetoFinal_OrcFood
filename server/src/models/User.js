@@ -33,6 +33,22 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    cupons: {
+        type: Object,
+        required: true,
+        c10: {
+            type: Number,
+            required: true,
+        },
+        c20: {
+            type: Number,
+            required: true,
+        },
+        c30: {
+            type: Number,
+            required: true,
+        },
+    },
   },
   {
     timestamps: true,

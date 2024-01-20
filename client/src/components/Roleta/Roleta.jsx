@@ -1,28 +1,42 @@
-import React, { useState, useRef } from "react";
-import { updateEconomy } from "../../services/api";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { updateUser } from "../../services/api";
 import "./Roleta.css";
 
 import PedacoRoleta from "./PedacoRoleta";
 
 const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
 
+  const navigate = useNavigate();
   console.log(user);
   console.log("id", user.id);
+  console.log('moedas', user.moedas);
 
   const [comprimento, setComprimento] = useState(1);
   const [premio, setPremio] = useState("Clique em 'GIRAR'");
   const [rotation, setRotation] = useState(0);
 
-  const [moedas, setMoedas] = useState(user.moedas);
-  const [tickets, setTickets] = useState(user.tickets);
+  const [moedas, setMoedas] = useState(JSON.parse(localStorage.getItem('moedas')) || user.moedas);
+  const [tickets, setTickets] = useState(3);
+
+  const [situacao, setSituacao] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem('moedas', moedas.toString());
+    localStorage.setItem('tickets', tickets.toString());
+  }, [moedas, tickets]); 
 
   const barraRef = useRef(null);
 
   const startRotation = () => {
-    barraRef.current.classList.toggle("parar");
-    const width2 = barraRef.current.getBoundingClientRect().width;
-    setComprimento(width2);
-    girar();
+    if (barraRef.current) {
+      setTickets(tickets - 1);
+      barraRef.current.classList.toggle("parar");
+      const width2 = barraRef.current.getBoundingClientRect().width;
+      setComprimento(width2);
+      girar();
+      setSituacao(1);
+    }
   };
 
   const girar = () => {
@@ -31,8 +45,8 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
     setRotation(rotation + comprimento + novaRotacao);
   };
 
-  const final = async () => {
-    // barraRef.current.classList.toggle("parar");
+  const final = () => {
+    setSituacao(0);
     const graus = ((rotation % 360) + 360) % 360;
     if (graus >= 0 && graus <= 59) {
       setPremio(p6);
@@ -53,7 +67,27 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
       setPremio(p1);
       setMoedas(moedas + 6);
     }
-    await updateEconomy(user.id, moedas, tickets);
+    console.log(user.id, moedas, tickets);
+  };
+
+  const handleUpdateEconomy = async () => {
+    try {
+      await updateUser(
+        user.id,
+        user.name,
+        user.endereco,
+        user.email,
+        user.password,
+        (user.moedas = moedas),
+        (user.tickets = tickets)
+      );
+      console.log("UpdateNow");
+      console.log(user);
+      // localStorage.setItem('moedas', 0);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -75,15 +109,39 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         <PedacoRoleta roletaValue="6" />
       </ul>
       <div className="premio">{premio}</div>
-      <div className="barra1">
-        <div className="barra_dentro" ref={barraRef}></div>
-      </div>
+
+      {situacao === 0 && tickets !== 0 && (
+        <div className="barra1">
+          <div className="barra_dentro" ref={barraRef}></div>
+        </div>
+      )}
+
       <div className="barraInferior">
-        <button className="spin_btn" onClick={startRotation}>
-          GIRAR
-        </button>
+        {tickets > 0 && situacao === 0 && (
+          <button className="spin_btn" onClick={startRotation}>
+            GIRAR
+          </button>
+        )}
+        {tickets === 0 && situacao === 0 && (
+          <p>Não há mais tickets disponíveis. Você possui {moedas} moedas.</p>
+        )}
       </div>
       <div className="central">^</div>
+
+      {user.moedas ? (
+        <div>
+          <div className="moedas">
+            <div className="div_moeda">$</div>: <p>{moedas}</p>
+          </div>
+          <div className="tickets">
+            <div className="div_ticket">Ticket</div>: <p>{tickets}</p>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+
+      {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={handleUpdateEconomy}>Coletar recompensa e voltar.</button>}
     </div>
   );
 };

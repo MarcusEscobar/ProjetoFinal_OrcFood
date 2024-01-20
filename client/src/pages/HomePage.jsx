@@ -67,6 +67,10 @@ const HomePage = () => {
         <picture className="banner_container">
           <img src="src\img\banner.png" alt="banner" />
         </picture>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Roleta-gamificação
         <Search onSearch={handleSearch} />
         <Cardapio
           cardapio={cardapio}
