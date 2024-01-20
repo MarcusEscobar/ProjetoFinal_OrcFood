@@ -43,7 +43,6 @@ const LoginPage = () => {
     
                 <div className="actions">
                     <button onClick={(e)=>{handleLogin(e)}}>Entrar</button>
-        
                     <button onClick={()=>{navigate("/cadastro")}}>Cadastrar</button>
                 </div>
             </form>

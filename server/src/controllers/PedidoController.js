@@ -1,16 +1,17 @@
 import Pedido from "../models/Pedido";
+import User from "../models/User";
 
 class PedidoController{
     async create(req, res){
         try {
-            const {cliente, pedidos, status} = req.body
+            const {idCliente ,cliente, pedidos, status} = req.body
 
-            const newPedido = await Pedido.create({cliente, pedidos, status})
+            const newPedido = await Pedido.create({idCliente ,cliente, pedidos , status})
             return res.status(201).json(newPedido)
 
 
         } catch (error) {
-            console.error(err);
+            console.error(error);
             return res.status(500).json({ error: "Internal server error." });
         }
 
@@ -18,14 +19,14 @@ class PedidoController{
 
     async update(req, res){
         try {
-            const {id, cliente, pedidos, status } = req.body
+            const {id, idCliente, cliente, pedidos, status } = req.body
             const item = await Pedido.findById(id);
 
             if (!item) {
                 return res.status(404).json();
             }
 
-            await item.updateOne({ cliente, pedidos, status });
+            await item.updateOne({ idCliente, cliente, pedidos, status });
 
             return res.status(200).json();
         } catch (error) {
@@ -38,7 +39,10 @@ class PedidoController{
     async show(req, res){
         try {
             const { id } = req.params;
-            const pedido = await Pedido.findById(id);
+            console.log(id)
+
+            const pedido = await Pedido.find({ idCliente: id }); 
+            console.log(pedido)
 
             if (!pedido) {
               return res.status(404).json();

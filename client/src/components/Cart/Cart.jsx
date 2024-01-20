@@ -19,7 +19,10 @@ function Cart() {
   }, 0.0);
 
   const handleFinalizarCompra = async ()=>{
-     const response = await createPedido(user, cartItems, "Pendente")
+    console.log(`user: ${typeof(user)}`)
+    console.log(`cart: ${typeof(cartItems)}`)
+
+     const response = await createPedido(user.id ,user, cartItems, "Pendente")
      console.log(response)
      localStorage.setItem('cartItems', JSON.stringify({cartItems:[]}))
      setCartItems([])

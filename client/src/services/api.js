@@ -65,13 +65,13 @@ export const destroyItem = async (itemId) => {
 };
 
 
-export const createPedido = async (cliente, pedidos, status)=>{
+export const createPedido = async ( idCliente ,cliente, pedidos, status)=>{
   const url = "/pedidos"
-  return api.post(url, {cliente, pedidos, status})
+  return api.post(url, {idCliente ,cliente, pedidos, status})
 }
 
-export const getPedido = async (id)=>{
-  const url = `/pedidos/${id}`
+export const getPedidoCliente = async (id)=>{
+  const url = `/pedidos_cliente/${id}`
   return api.get(url)
 }
 
@@ -81,9 +81,9 @@ export const getPedidos = async ()=>{
 
 }
 
-export const updatePedido = async (id,cliente, pedidos, status)=>{
+export const updatePedido = async (id,idCliente,cliente, pedidos, status)=>{
   const url = '/pedidos'
-  return api.put(url, {id,cliente, pedidos, status})
+  return api.put(url, {id, idCliente, cliente, pedidos, status})
 }
 
 export const destroyPedido = async (itemId) => {
