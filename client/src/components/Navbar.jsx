@@ -6,7 +6,7 @@ import { AuthContext } from '../contexts/auth';
 import CartButton from './Cartbutton/CartButton';
 import AppContext from '../contexts/AppContext';
 
-const Navbar = () => {
+const Navbar = (pedidos) => {
   const navigate = useNavigate()
   const { user, logout} = useContext(AuthContext)
   const { setCartItems } = useContext(AppContext)
@@ -26,8 +26,12 @@ const Navbar = () => {
         <h1>Afood</h1>
         <h2>Olá, <span>{user.name}!</span></h2>
         <ul>
-          <li><button type="button" onClick={()=>{navigate('/pedidos')}}>Pedidos</button></li>
             <CartButton/>
+            <li>
+              {pedidos.pedidos?
+              <><button className='logout-btn' type="button" onClick={()=>{navigate('/')}}>Home</button></> 
+              :<><button className='logout-btn' type="button" onClick={()=>{navigate('/pedidos')}}>Pedidos</button></>}
+            </li>
             <li><button className='logout-btn' type="button" onClick={handleLogout}>Logout</button></li>
         </ul>
     </header>
