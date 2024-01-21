@@ -27,7 +27,6 @@ class SessionController {
                 user: {
                     id,
                     email,
-                    password,
                     name,
                     endereco,
                     scope,

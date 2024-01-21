@@ -1,40 +1,52 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/auth";
 import { updateUser } from "../services/api";
-import '../styles/EditUserPage.css'
+import { ToastContainer, toast } from "react-toastify";
 import Navbar from "../components/Navbar";
+
+import '../styles/EditUserPage.css'
+import "react-toastify/dist/ReactToastify.css";
 
 function EditUserPage() {
     const {user, login, logout } = useContext(AuthContext)
     console.log(user)
 
+    const notify = () => {
+        toast.error("Preencha o campo Senha", { position: "top-right" });
+      };
+
     const [email, setEmail] = useState(user.email);
-    const [password, setPassword] = useState(user.password);
+    const [password, setPassword] = useState("");
     const [name, setName] = useState(user.name);
     const [endereco, setEndereco] = useState(user.endereco);
 
     const handleEdit = async(e)=>{
         e.preventDefault();
-        const  response =  await updateUser(
-                user.id, 
-                name, 
-                endereco, 
-                email, 
-                password, 
-                user.scope ,
-                user.moedas, 
-                user.tickets, 
-                user.cupons.c10, 
-                user.cupons.c20, 
-                user.cupons.c30)
-            console.log(response)
-            logout()
-            login(email, password)
+        if(password){
+            const  response =  await updateUser(
+                    user.id, 
+                    name, 
+                    endereco, 
+                    email, 
+                    password, 
+                    user.scope ,
+                    user.moedas, 
+                    user.tickets, 
+                    user.cupons.c10, 
+                    user.cupons.c20, 
+                    user.cupons.c30)
+                console.log(response)
+                logout()
+                login(email, password)
+        }else{
+            notify()
+        }
 
     }
 
     return ( 
         <div className="edit_page">
+        <ToastContainer />
         <Navbar/>
         <form>
             <div className="field">
