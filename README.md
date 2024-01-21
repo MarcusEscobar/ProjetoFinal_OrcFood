@@ -27,7 +27,8 @@ npm install
 ~~~~
 Agora dentro da pasta server crie um arquivo .env seguindo as variaveis definidas em .env.exemple
  
-O campo MONGODB_URI é responsável por fazer a conexão com o banco de dados, associe essa variável a seguinte url:mongodb+srv://admin:50r7CZ3cdysrETPi@cardapio.cqgtenm.mongodb.net/?retryWrites=true&w=majority
+O campo MONGODB_URI é responsável por fazer a conexão com o banco de dados, associe essa variável a seguinte url:
+mongodb+srv://admin:50r7CZ3cdysrETPi@cardapio.cqgtenm.mongodb.net/?retryWrites=true&w=majority
 
 
 
