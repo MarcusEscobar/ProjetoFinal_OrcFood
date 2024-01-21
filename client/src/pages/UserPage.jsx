@@ -3,17 +3,24 @@ import { AuthContext } from "../contexts/auth";
 import "../styles/UserPage.css";
 import PedidosPage from "./PedidosPage";
 import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../services/api";
 
 function UserPage() {
     const navigate = useNavigate()
-    const {user} = useContext(AuthContext)
+    const {user, logout} = useContext(AuthContext)
     console.log(user)
     const c10 = parseInt(localStorage.getItem('c10'))
     const c20 = parseInt(localStorage.getItem('c20'))
     const c30 = parseInt(localStorage.getItem('c30'))
     const moedas = parseInt(localStorage.getItem('moedas'))
-    const tickets = parseInt(localStorage.getItem('tickets')
-)
+    const tickets = parseInt(localStorage.getItem('tickets'))
+
+
+    const hendleDelete = async()=>{
+        await deleteUser(user.id)
+        logout()
+       
+    }
 
 
     return ( 
@@ -22,7 +29,7 @@ function UserPage() {
                 <button className="btnPerfil" onClick={()=>{navigate('/roleta')}}>Acessar roleta</button>
                 <button className="btnPerfil" onClick={()=>{navigate('/cupons')}}>Comprar cupons</button>
                 <button className="btnPerfil" onClick={()=>{navigate('/edit')}}>Editar perfil</button>
-                <button className="btnPerfil">Excluir Perfil</button>
+                <button className="btnPerfil" onClick={hendleDelete} >Excluir Perfil</button>
             </div>
             <div>
                 <div className="userInfo" >

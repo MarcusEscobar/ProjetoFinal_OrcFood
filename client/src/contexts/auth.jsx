@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("tickets", response.data.user.tickets);
 
     navigate("/");
+    return response
   };
 
   const logout = () => {

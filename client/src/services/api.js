@@ -53,6 +53,11 @@ export const updateUser = async (
   });
 };
 
+export const deleteUser = async(id) =>{
+  const url =`/users/${id}`
+  return api.delete(url)
+}
+
 export const updateUserEconomy = async (id, moedas, tickets, c10, c20, c30) => {
   const url = `/user_economy/${id}`;
   return api.put(url, { moedas, tickets, c10, c20, c30 });
