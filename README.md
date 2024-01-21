@@ -59,15 +59,23 @@ npm run dev
 
 ## Funcionalidades da aplicação
 
-Recursos para Clientes:
+### Recursos para Clientes:
 
 ### Exploração do Cardápio: Os clientes podem visualizar todos os produtos disponíveis, ler descrições detalhadas e selecionar itens para compra.
-Carrinho de Compras: Facilitamos o processo de compra com um carrinho intuitivo, permitindo que os clientes revisem e finalizem seus pedidos com facilidade.
-Gamificação: Cada compra é recompensada com um ticket, dando aos clientes a chance de girar uma roleta emocionante.
-Roleta de Prêmios: Os clientes podem ganhar moedas que podem ser usadas para adquirir cupons de desconto ao girar a roleta.
-Perfil Personalizado: Os clientes têm acesso a um perfil pessoal onde podem visualizar e editar suas informações, como nome, endereço e email.
-Acompanhamento de Compras: O status e o andamento de cada compra são facilmente acessíveis no perfil do cliente.
-Recursos para Administradores:
+
+### Carrinho de Compras: Facilitamos o processo de compra com um carrinho intuitivo, permitindo que os clientes revisem e finalizem seus pedidos com facilidade.
+
+### Gamificação: Cada compra é recompensada com um ticket, dando aos clientes a chance de girar uma roleta emocionante.
+
+### Roleta de Prêmios: Os clientes podem ganhar moedas que podem ser usadas para adquirir cupons de desconto ao girar a roleta.
+
+### Perfil Personalizado: Os clientes têm acesso a um perfil pessoal onde podem visualizar e editar suas informações, como nome, endereço e email.
+
+### Acompanhamento de Compras: O status e o andamento de cada compra são facilmente acessíveis no perfil do cliente. onde também é possível cancelar um pedido realizado.
+
+### Cadastro: Os clientes podem se cadastrar na aplicação assim tendo acesso a todas as outras funcionalidades.
+
+### Recursos para Administradores:
 
 Gestão do Cardápio: Os administradores têm o controle total sobre o cardápio, podendo adicionar ou remover produtos conforme necessário.
 Customização da Roleta: Ajuste os prêmios disponíveis na roleta para manter a experiência sempre interessante.
