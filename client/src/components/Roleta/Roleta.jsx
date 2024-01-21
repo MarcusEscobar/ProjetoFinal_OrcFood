@@ -22,7 +22,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
     JSON.parse(localStorage.getItem("moedas")) || user.moedas
   );
   const [tickets, setTickets] = useState(
-    JSON.parse(localStorage.getItem("tickets")) || user.tickets
+    JSON.parse(localStorage.getItem("tickets")) 
   );
 
   const [situacao, setSituacao] = useState(0);
@@ -61,8 +61,8 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         user.cupons.c20,
         user.cupons.c30,
       );
-
-      toast.success('Recompensa coletada!');
+      localStorage.setItem("moedas", moedas.toString());
+      localStorage.setItem("tickets", tickets.toString());
       console.log("UpdateNow");
       console.log(user);
 
@@ -97,6 +97,12 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
     handleUpdateEconomy();
   };
 
+  const recompensaColetada = () => {
+    toast.success('Recompensa coletada!');
+    handleUpdateEconomy();
+    setSituacao(2);
+  }
+
   return (
     <div className="roleta_container">
       
@@ -114,14 +120,14 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
           <></>
         )}
         <div className="fimTickets">
-          {tickets === 0 && situacao === 0 && (
+          {tickets === 0 && (
             <>
             <p>Não há mais tickets disponíveis.</p> 
             <p>Você possui {moedas} moedas.</p>
             </>
           )}
         </div>
-        {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={handleUpdateEconomy}>Coletar recompensa!</button>}
+        {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={recompensaColetada}>Coletar recompensa!</button>}
       </div>
 
       <div className="roleta_principal">
@@ -156,7 +162,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         
         <div className='central'></div>
       </div>
-      <ToastContainer />
+      <ToastContainer position="bottom-left" />
     </div>
   );
 };

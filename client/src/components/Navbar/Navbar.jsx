@@ -32,6 +32,14 @@ const Navbar = () => {
       <ul>
         <CartButton />
         <li>
+          <button
+          className="logout-btn"
+          type="button"
+          onClick={() => {
+            navigate("/");
+          }}>Cardápio</button>
+        </li>
+        <li>
           {user.scope ==="adm" &&
             <button
             className="logout-btn"
