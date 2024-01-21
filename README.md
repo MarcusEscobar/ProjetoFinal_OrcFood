@@ -70,8 +70,6 @@ npm run dev
 
 ### Gestão do Cardápio: Os administradores têm o controle total sobre o cardápio, podendo adicionar ou remover produtos conforme necessário.
 
-### Customização da Roleta: Ajuste os prêmios disponíveis na roleta para manter a experiência sempre interessante.
-
 ### Monitoramento de Pedidos: Todos os pedidos são centralizados para os administradores, que podem editar os status para "pendente", "em andamento" ou "concluído".
 
 Para acessar a conta como administrador, faça o login utilizando as seguintes informações:
