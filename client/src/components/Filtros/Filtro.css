@@ -19,3 +19,6 @@
   color: white;
 
 }
+.filtro--active button:hover{
+  background-color: #217e7e;
+}

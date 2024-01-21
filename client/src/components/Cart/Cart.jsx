@@ -43,7 +43,9 @@ function Cart() {
   return (
     <section className={`cart ${isCartVisible ? "cart--active" : ""}`}>
       <ToastContainer />
-      {cartItems.length === 0 && <span>Carrinho vazio</span>}
+      {cartItems.length === 0  ?
+        <span className="spanCarrinho" >Carrinho vazio</span> : 
+        <button onClick={handleLimparCarrinho} className="buttonsCarrinho" >Limpar carrinho</button>}
 
       <div className="cart-items">
         {cartItems.map((cartItem, index) => (
@@ -56,9 +58,9 @@ function Cart() {
         ))}
       </div>
 
-      <button onClick={handleLimparCarrinho}>Limpar carrinho</button>
+      
       <div className="cart-resume">{formatCurrency(totalPrice, "BRL")} </div>
-      <button onClick={handleFinalizarCompra}>finalizar</button>
+      <button onClick={handleFinalizarCompra} className="buttonsCarrinho">finalizar</button>
     </section>
   );
 }
