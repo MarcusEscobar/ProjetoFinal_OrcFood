@@ -50,19 +50,21 @@ const ItemPage = () => {
   }
 
   return (
-    <div className="item-page">
-      <Navbar />
-      <div className="main_container">
-      <div className="detalhes-img">
-      <picture >
-          <img src={item.image} alt={item.name} />
-        </picture>    
-        </div>    
-        <h4>{item.name}</h4>
-        <h6> {item.category}</h6>
-        <p>Serve {item.serve} pessoa(s)</p>
-        <p>{item.description}</p>
-        <h5> R${item.price}</h5>
+    <div className="containerItemPage">
+      <div className="item-page">
+        <Navbar />
+        <div className="main_container">
+        <div className="detalhes-img">
+        <picture >
+            <img src={item.image} alt={item.name} className="imgItemPage" />
+          </picture>    
+          </div>    
+          <h4>{item.name}</h4>
+          <h6> {item.category}</h6>
+          <p>Serve {item.serve} pessoa(s)</p>
+          <p>{item.description}</p>
+          <h5> R${item.price}</h5>
+        </div>
       </div>
     </div>
   );
