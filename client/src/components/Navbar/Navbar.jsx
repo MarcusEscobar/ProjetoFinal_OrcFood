@@ -5,8 +5,9 @@ import { AuthContext } from "../../contexts/auth";
 import CartButton from "../Cartbutton/CartButton";
 import AppContext from "../../contexts/AppContext";
 import "./Navbar.css";
+import Cart from "../Cart/Cart";
 
-const Navbar = (pedidos) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
   const { setCartItems } = useContext(AppContext);
@@ -18,42 +19,30 @@ const Navbar = (pedidos) => {
   };
 
   return (
+    <div>
+
     <header>
       <a href="/">
         <img src="/src/img/Icone.png" alt="Icone" width="50" height="45" />
       </a>
       <h1>Afood</h1>
       <h2>
-        Olá, <span>{user.name}!</span>
+        Olá, <span onClick={()=>{navigate('/user')}} >{user.name}!</span>
       </h2>
       <ul>
         <CartButton />
         <li>
-          {pedidos.pedidos ? (
-            <>
-              <button
-                className="logout-btn"
-                type="button"
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Home
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                className="logout-btn"
-                type="button"
-                onClick={() => {
-                  navigate("/pedidos");
-                }}
-              >
-                Pedidos
-              </button>
-            </>
-          )}
+          {user.scope ==="adm" &&
+            <button
+            className="logout-btn"
+            type="button"
+            onClick={() => {
+              navigate("/pedidos");
+            }}
+          >
+            Pedidos
+          </button>
+          }
         </li>
         <li>
           <button className="logout-btn" type="button" onClick={handleLogout}>
@@ -61,7 +50,10 @@ const Navbar = (pedidos) => {
           </button>
         </li>
       </ul>
+      
     </header>
+    <Cart />
+    </div>
   );
 };
 

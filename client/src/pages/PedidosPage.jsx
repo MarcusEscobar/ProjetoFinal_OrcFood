@@ -34,7 +34,7 @@ function PedidosPage() {
     }, []);
     return ( 
         <div className="containerPedidos">
-            <Navbar pedidos={true}/>
+            <Navbar/>
             <table className="tablePedidos"> 
                 <tbody>
                     <tr>

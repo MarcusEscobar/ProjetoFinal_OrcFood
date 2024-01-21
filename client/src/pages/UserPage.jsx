@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth";
 import "../styles/UserPage.css";
-import Navbar from "../components/Navbar";
 import PedidosPage from "./PedidosPage";
 import { useNavigate } from "react-router-dom";
 
