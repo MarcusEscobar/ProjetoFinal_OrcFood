@@ -152,7 +152,7 @@
 .spin_btn {
     position: absolute;
     left: 50.9%;
-    top: 50%;
+    top: 47%;
     width: 50px;
     height: 50px;
     border: none;
@@ -175,7 +175,7 @@
     height: 50px;
     background-color: lightgray;
     border-radius: 50%;
-    left: 50.9%;
+    left: 52.6%;
     top: 50%;
     font-weight: bold;
     z-index: 9;
