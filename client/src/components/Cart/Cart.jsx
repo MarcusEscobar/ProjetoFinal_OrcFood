@@ -84,7 +84,7 @@ function Cart() {
       toast.error("Carrinho vazio", { position: "bottom-center" });
     } else {
       toast.success("Pedido finalizado", { position: "bottom-center" });
-      toast.success("Você ganhou 1 Ticket", { position: "bottom-center" });
+      toast.info("Você ganhou 1 Ticket", { position: "bottom-center" });
       await createPedido(user.id, user, cartItems, "Pendente");
       localStorage.setItem("cartItems", JSON.stringify({ cartItems: [] }));
       setCartItems([]);
@@ -135,11 +135,11 @@ function Cart() {
             }}
           >
             <option value={0}>sem desconto</option>
-            {c10 && <option value={10}>10% de desconto</option>}
-            {c20 && <option value={20}>20% de desconto</option>}
-            {c30 && <option value={30}>30% de desconto</option>}
+            {c10 && <option value={10}>10% de desconto <span className="qtdCupons">(x{localStorage.getItem('c10')})</span></option>}
+            {c20 && <option value={20}>20% de desconto <span className="qtdCupons">(x{localStorage.getItem('c20')})</span></option>}
+            {c30 && <option value={30}>30% de desconto <span className="qtdCupons">(x{localStorage.getItem('c30')})</span></option>}
           </select>
-        </div>
+        </div> 
         {formatCurrency(priceDesconto, "BRL")}{" "}
       </div>
       <button onClick={handleFinalizarCompra} className="buttonsCarrinho">

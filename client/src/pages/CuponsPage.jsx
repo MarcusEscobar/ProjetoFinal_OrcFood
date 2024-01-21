@@ -95,30 +95,33 @@ const CuponsPage = () => {
     <div className="main_container">
       <Navbar />
       <div className="moedas_cupom">Moedas: {moedas}</div>
-      <CupomComprar
-        desconto={10}
-        onSale={handleSale}
-        preco={10}
-        qtd={cupom10}
-        color={"aquamarine"}
-        border={"blue"}
-      />
-      <CupomComprar
-        desconto={20}
-        onSale={handleSale}
-        preco={20}
-        qtd={cupom20}
-        color={"greenyellow"}
-        border={"green"}
-      />
-      <CupomComprar
-        desconto={30}
-        onSale={handleSale}
-        preco={30}
-        qtd={cupom30}
-        color={"violet"}
-        border={"purple"}
-      />
+
+      <div className="cupons_container">
+        <CupomComprar
+          desconto={10}
+          onSale={handleSale}
+          preco={10}
+          qtd={cupom10}
+          color={"aquamarine"}
+          border={"blue"}
+        />
+        <CupomComprar
+          desconto={20}
+          onSale={handleSale}
+          preco={20}
+          qtd={cupom20}
+          color={"greenyellow"}
+          border={"green"}
+        />
+        <CupomComprar
+          desconto={30}
+          onSale={handleSale}
+          preco={30}
+          qtd={cupom30}
+          color={"violet"}
+          border={"purple"}
+        />
+      </div>
 
       <ToastContainer position="bottom-right" />
     </div>
