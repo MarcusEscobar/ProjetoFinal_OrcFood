@@ -20,9 +20,11 @@ const Navbar = (pedidos) => {
     logout()
   }
 
-  return (
+  return (    
     <header>
+      <a href="/">
         <img src="/src/img/Icone.png" alt="Icone" width="50" height="45"/>
+      </a>
         <h1>Afood</h1>
         <h2>Olá, <span>{user.name}!</span></h2>
         <ul>
