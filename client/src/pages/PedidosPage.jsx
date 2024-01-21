@@ -39,9 +39,9 @@ function PedidosPage() {
             <table className="tablePedidos"> 
                 <tbody>
                     <tr>
-                        <th>Cliente</th>
-                        <th>Pedido</th>
-                        <th>Status</th>
+                        <th><p>Cliente</p></th>
+                        <th><p>Pedido</p></th>
+                        <th><p>Status</p></th>
                     </tr>
                     {pedidos.map((pedido, index) => (
                         <Pedido 

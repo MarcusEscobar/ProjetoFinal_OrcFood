@@ -14,6 +14,7 @@ import { useContext } from "react";
 import Provider from "./contexts/Provider.jsx";
 import PedidosPage from "./pages/PedidosPage.jsx";
 import EditUserPage from "./pages/EditUserPage.jsx";
+import UserPage from "./pages/UserPage.jsx";
 
 
 function AppRoutes() {
@@ -64,6 +65,7 @@ function AppRoutes() {
                         <Route path="/roleta" element={<Private><RoletaPage /></Private>}></Route>
                         <Route path="/cupons" element={<Private><CuponsPage /></Private>}></Route>
                         <Route path="/edit" element={<Private><EditUserPage/></Private>}></Route>
+                        <Route path="/user" element={<Private><UserPage/></Private>} ></Route>
                     </Routes>
                 </AuthProvider>
             </Provider>

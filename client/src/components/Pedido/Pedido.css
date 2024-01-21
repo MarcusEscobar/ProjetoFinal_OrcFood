@@ -10,9 +10,15 @@
     width: 70%;
 
 }
-table, th, td {
-    border:1px solid black;
+th, td {
+    border-radius: 10px;
+    border: 2px solid #37a6a6;
+    font-size: 20px;
   }
+
+th p{
+    min-height: 30px;
+}
 .insideTd{
     display: flex;
     align-items: center;

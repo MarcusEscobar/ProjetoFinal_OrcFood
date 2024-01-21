@@ -21,6 +21,7 @@ header h2 span {
     color: #8c2016;
     font-size: 25px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .CartButton {

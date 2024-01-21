@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import "../styles/components/Navbar.css"
 import { AuthContext } from '../contexts/auth';
@@ -23,7 +23,7 @@ const Navbar = (pedidos) => {
         <img src="/src/img/Icone.png" alt="Icone" width="50" height="45"/>
       </a>
         <h1>Afood</h1>
-        <h2>Olá, <span>{user.name}!</span></h2>
+        <h2>Olá, <span onClick={()=>{navigate("/user")}} >{user.name}!</span></h2>
         <ul>
             <CartButton/>
             <li>
