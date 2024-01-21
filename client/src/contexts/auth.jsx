@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("c10", response.data.user.cupons.c10);
     localStorage.setItem("c20", response.data.user.cupons.c20);
     localStorage.setItem("c30", response.data.user.cupons.c30);
+    localStorage.setItem("tickets", response.data.user.tickets);
 
     navigate("/");
   };
