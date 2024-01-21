@@ -58,7 +58,7 @@ header ul li .li {
   transition: 0.2s;
 }
 
-header svg {
+header .icone_hamburguer {
   display: none;
   margin: 0 1em;
   font-size: 25px;

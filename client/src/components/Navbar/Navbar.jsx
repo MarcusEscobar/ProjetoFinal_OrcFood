@@ -67,7 +67,7 @@ const Navbar = () => {
           </button>
         </li>
       </ul>
-      <FcMenu onClick={toggleMenuActive} />
+      <FcMenu onClick={toggleMenuActive} className="icone_hamburguer"/>
       {menuActive ? <NavbarMenu user={user} onLogout={handleLogout} /> : <></>}
     </header>
     <Cart />
