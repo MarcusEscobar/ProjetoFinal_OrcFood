@@ -1,8 +1,29 @@
-.roleta_container,
-.barraInferior {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.roleta_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: baseline;
+    width: 100%;
+    height: 100%;
+    padding: 0 5em;
+    gap: 18em;
+}
+.roleta_info {
+    display: flex;
+    flex-direction: column;
+    flex: .3;
+    gap: 3em;
+    height: 100%;
+    min-width: 12.5%;
+}
+.roleta_principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.roleta_container svg {
+    font-size: 2em;
 }
 .pedacoRoleta:first-child .text {
   background-color: violet;
@@ -116,6 +137,72 @@
   animation-iteration-count: infinite;
   animation-play-state: running;
 }
+.text {
+    position: absolute;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    text-align: center;
+    display: block;
+    transform: skewY(40deg) rotate(25deg);
+    padding-top: 250px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.spin_btn {
+    position: absolute;
+    left: 50.9%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: .2s;
+    z-index: 10;
+}
+.spin_btn:hover {
+    color: white;
+    background-color: #777777;
+    border: 2px solid rgb(107, 107, 107);
+}
+.central {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: lightgray;
+    border-radius: 50%;
+    left: 50.9%;
+    top: 50%;
+    font-weight: bold;
+    z-index: 9;
+}
+.premio {
+    font-size: 20px;
+    font-weight: 600;
+}
+.barra1 {
+    background-color: #777777;
+    width: 250px;
+    min-height: 8px;
+    border-radius: 12px;
+    padding: 2px;
+    margin: 15px auto 10px;
+}
+.barra_dentro {
+    border-radius: 8px;
+    width: 0%;
+    height: 8px;
+    background-color: rgb(255, 192, 75);
+    animation-name: animacaoBarra;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
 .parar {
   animation-play-state: paused;
 }
@@ -133,29 +220,18 @@
 
 .editarPremios {
   position: absolute;
-  left: 2%;
+  top: 25%;
+  right: 7%;
 }
 
 .setarPremio {
   margin-top: 10px;
 }
 
-.moedas {
+.moedas, .tickets {
   display: flex;
-  justify-content: space-between;
+  gap: 5px;
   align-items: center;
-  position: absolute;
-  top: 10%;
-  left: 2%;
-  font-size: 2em;
-}
-.tickets {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  top: 20%;
-  left: 2%;
   font-size: 2em;
 }
 .div_moeda {
@@ -175,12 +251,27 @@
   background-color: rgb(58, 58, 255);
   border: 3px solid blue;
 }
-
-/* .start-rotate {
-    animation: start-rotate 1s linear infinite;
+.fimTickets p {
+    text-align: start;
+    text-indent: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
-@keyframes start-rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-} */
+.gift_btn {
+    color: white;
+    background: rgb(0, 169, 0);
+    border: solid 1px rgb(0, 169, 0);
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 16px;
+    width: 200px;
+    cursor: pointer;
+  }
+.gift_btn:hover {
+    background-color: transparent;
+    color: rgb(0, 132, 0);
+    border: solid 1px rgb(0, 132, 0);
+    font-weight: bold;
+    transition: 0.2s;
+  }

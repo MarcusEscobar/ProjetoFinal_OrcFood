@@ -55,7 +55,7 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <Navbar />
-      <div className="main_container">
+      <div className="homepage_container">
         <picture className="banner_container">
           <img src="src\img\banner.png" alt="banner" />
         </picture>

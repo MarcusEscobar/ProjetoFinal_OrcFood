@@ -13,7 +13,6 @@ import "../styles/CuponsPage.css";
 const CuponsPage = () => {
   const { user } = useContext(AuthContext);
 
-
   const [moedas, setMoedas] = useState(
     JSON.parse(localStorage.getItem("moedas")) || user.moedas
   );
@@ -27,8 +26,6 @@ const CuponsPage = () => {
     JSON.parse(localStorage.getItem("c30")) || user.cupons.c30
   );
 
-  // JSON.parse(localStorage.getItem('c10')) ||
-
 
   useEffect(() => {
     localStorage.setItem("moedas", moedas.toString());
@@ -38,6 +35,7 @@ const CuponsPage = () => {
 
     if (moedas < 0 || user.moedas < 0) {
       setMoedas(0);
+
       (async () =>
         await updateUserEconomy(
           user.id,
@@ -47,7 +45,6 @@ const CuponsPage = () => {
           user.cupons.c20,
           user.cupons.c30
         ))();
-      // localStorage.setItem('moedas', moedas.toString());
     }
   }, [moedas, cupom10, cupom20, cupom30]);
 
@@ -77,7 +74,6 @@ const CuponsPage = () => {
           (user.cupons.c30 = cupom30)
         );
 
-        // localStorage.setItem('user', user);
         toast.success("Cupom comprado com sucesso!");
       } catch (err) {
         console.error(err);
@@ -92,7 +88,7 @@ const CuponsPage = () => {
         (user.cupons.c20 = cupom20),
         (user.cupons.c30 = cupom30)
       );
-    }
+    };
   };
 
   return (
@@ -123,6 +119,7 @@ const CuponsPage = () => {
         color={"violet"}
         border={"purple"}
       />
+
       <ToastContainer position="bottom-right" />
     </div>
   );
