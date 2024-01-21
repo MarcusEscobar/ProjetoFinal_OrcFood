@@ -1,56 +1,56 @@
 .login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    background-color: #f0f2f2
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f0f2f2;
 }
 
 .login form {
-    box-shadow: 4px 4px 20px#aaaa;
-    width: 100%;
-    max-width: 420px;
-    padding: .95rem;
-    border-radius: 5px;
-    font-weight: bold;
+  box-shadow: 4px 4px 20px#aaaa;
+  width: 100%;
+  max-width: 420px;
+  padding: 0.95rem;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .login .field label {
-    padding-top: 15px;
-    display: block;
+  padding-top: 15px;
+  display: block;
 }
 
 .login .field input {
-    width: 100%;
+  width: 100%;
 }
 
 .login .actions {
-    color: red;
-    display: flex;
-    justify-content: space-between;
-    padding-left: px;
-    text-align: right;
-    margin-top: 1rem;
-    gap: 8px;
+  color: red;
+  display: flex;
+  justify-content: space-between;
+  padding-left: px;
+  text-align: right;
+  margin-top: 1rem;
+  gap: 8px;
 }
 
 .login .actions button {
-    color: white;
-    background: #8c2016;
-    border: solid 1px #8c2016;
-    padding: 5px;
-    border-radius: 15px;
-    font-size: 16px;
-    width: 200px;
-    cursor: pointer;
+  color: white;
+  background: #8c2016;
+  border: solid 1px #8c2016;
+  padding: 5px;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 200px;
+  cursor: pointer;
 }
 
-.login .actions button:hover{
-    background-color: transparent;
-    color: #8c2016;
-    border: solid 1px #8c2016;
-    font-weight: bold;
-    transition: 0.2s;
+.login .actions button:hover {
+  background-color: transparent;
+  color: #8c2016;
+  border: solid 1px #8c2016;
+  font-weight: bold;
+  transition: 0.2s;
 }

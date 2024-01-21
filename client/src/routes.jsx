@@ -1,19 +1,18 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
+import { useContext } from "react";
 
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import NovoItemPage from "./pages/NovoItemPage.jsx";
 import CadastroPage from "./pages/CadastroPage.jsx";
-import SearchPage from "./pages/SearchPage.jsx";
 import ItemPage from "./pages/ItemPage.jsx";
 import RoletaPage from "./pages/RoletaPage.jsx";
 import CuponsPage from "./pages/CuponsPage.jsx";
-
-import { AuthContext, AuthProvider } from './contexts/auth.jsx' 
-import { useContext } from "react";
-import Provider from "./contexts/Provider.jsx";
 import PedidosPage from "./pages/PedidosPage.jsx";
 import EditUserPage from "./pages/EditUserPage.jsx";
+
+import Provider from "./contexts/Provider.jsx";
 
 
 function AppRoutes() {
@@ -58,7 +57,6 @@ function AppRoutes() {
                         <Route path="/login" element={<LoginPage/>}></Route>
                         <Route path="/cadastro" element={<CadastroPage/>} ></Route>
                         <Route path="/newitem" element={<PrivateAdmin><NovoItemPage/></PrivateAdmin>}></Route>
-                        <Route path="/search" element={<SearchPage/>}></Route>
                         <Route path="/cardapio/:id" element={<Private><ItemPage /></Private>}></Route>
                         <Route path='/pedidos' element={<Private><PedidosPage/></Private>} ></Route>
                         <Route path="/roleta" element={<Private><RoletaPage /></Private>}></Route>

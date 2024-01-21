@@ -1,4 +1,4 @@
-.containerItemPage{
+.containerItemPage {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -12,9 +12,8 @@
   padding: 30px;
   border-radius: 8px;
   box-shadow: 4px 4px 20px#aaaa;
+}
 
-  }
-  
 .main-container {
   max-width: 600px;
   margin: 0px auto;
@@ -24,7 +23,6 @@ h4 {
   color: #b97b75;
   margin-bottom: px;
   font-size: 40px;
-  
 }
 
 h5 {
@@ -42,23 +40,19 @@ h6 {
 .image-container {
   margin-top: 20px;
   text-align: center;
-  border: 8px solid rgb(0, 0, 0)
+  border: 8px solid rgb(0, 0, 0);
 }
-.imgItemPage{
+.imgItemPage {
   width: 300px;
-  height: 200px;  
+  height: 200px;
 }
 
-.item-page .detalhes-img{
+.item-page .detalhes-img {
   border: 8px solid rgb(0, 0, 0);
   border-radius: 15px;
 }
-.item-page .detalhes-img:hover{
+.item-page .detalhes-img:hover {
   transform: scale(1.03);
   box-shadow: 0 0 8px #aaaa;
   transition: 0.2s;
 }
-
-  
-  
-

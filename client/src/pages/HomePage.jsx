@@ -1,21 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/auth";
-
-import Search from "../components/Search";
-import Cardapio from "../components/Cardapio/Cardapio";
-import Navbar from "../components/Navbar";
-import Cart from "../components/Cart/Cart";
-// import { createItem } from "../services/api";
-
 import { getItens, destroyItem } from "../services/api";
 
+import Search from "../components/Search/Search";
+import Cardapio from "../components/Cardapio/Cardapio";
+import Navbar from "../components/Navbar/Navbar";
+import Cart from "../components/Cart/Cart";
 import "../App.css";
+// import { createItem } from "../services/api";
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
-
-  console.log(user);
-  console.log(user.moedas);
 
   const [cardapio, setCardapio] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +21,6 @@ const HomePage = () => {
       setLoading(true);
       const response = await getItens(query);
       setCardapio(response.data);
-      console.log(response.data);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -44,11 +38,9 @@ const HomePage = () => {
 
   const handleDeleteItem = async (item) => {
     if (user === "adm") {
-      console.log("Item deleted.", item._id);
       await destroyItem(item._id);
       await loadData();
     }
-    console.log("Item deleted.", item._id);
     await destroyItem(item._id);
     await loadData();
   };

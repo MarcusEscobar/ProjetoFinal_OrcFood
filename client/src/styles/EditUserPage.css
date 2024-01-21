@@ -1,51 +1,53 @@
-.edit_page{
-    max-width: 600px;
-    height: 450px;
-    margin:80px auto;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 4px 4px 20px#aaaa;
-    font-weight: bold;
+.edit_page {
+  max-width: 600px;
+  height: 450px;
+  margin: 80px auto;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 20px#aaaa;
+  font-weight: bold;
 }
 
 .edit_page label {
-    padding-top: 15px;
-    display: block;
-  }
-  
-.edit_page input, select, textarea {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px;
-    resize: none;
-  }
-  
+  padding-top: 15px;
+  display: block;
+}
+
+.edit_page input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  resize: none;
+}
+
 .edit_page label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-  }
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
 button.btn-edit {
-    margin-left: 30%;
-    margin-top: 10px;
-    color: white;
-    background: #8c2016;
-    border: solid 1px #8c2016;
-    padding: 10px;
-    border-radius: 15px;
-    font-size: 16px;
-    width: 200px;
-    cursor: pointer;
-  }
-  
+  margin-left: 30%;
+  margin-top: 10px;
+  color: white;
+  background: #8c2016;
+  border: solid 1px #8c2016;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 200px;
+  cursor: pointer;
+}
+
 button.btn-edit:hover {
-    background-color: transparent;
-    color: #8c2016;
-    border: solid 1px #8c2016;
-    font-weight: bold;
-    transition: 0.2s;
-  }
+  background-color: transparent;
+  color: #8c2016;
+  border: solid 1px #8c2016;
+  font-weight: bold;
+  transition: 0.2s;
+}

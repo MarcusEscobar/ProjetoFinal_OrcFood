@@ -25,15 +25,38 @@ export const createUser = async (name, endereco, email, password) => {
   });
 };
 
-export const updateUser = async (id, name, endereco, email, password, scope, moedas, tickets, c10, c20, c30) => {
+export const updateUser = async (
+  id,
+  name,
+  endereco,
+  email,
+  password,
+  scope,
+  moedas,
+  tickets,
+  c10,
+  c20,
+  c30
+) => {
   const url = `/users/${id}`;
-  return api.put(url, { name, endereco, email, password, scope,moedas, tickets, c10, c20, c30 })
-}
+  return api.put(url, {
+    name,
+    endereco,
+    email,
+    password,
+    scope,
+    moedas,
+    tickets,
+    c10,
+    c20,
+    c30,
+  });
+};
 
 export const updateUserEconomy = async (id, moedas, tickets, c10, c20, c30) => {
   const url = `/user_economy/${id}`;
   return api.put(url, { moedas, tickets, c10, c20, c30 });
-}
+};
 
 export const getItens = async (query) => {
   let url = "/cardapio/";
@@ -80,26 +103,25 @@ export const destroyItem = async (itemId) => {
   return api.delete(url);
 };
 
+export const createPedido = async (idCliente, cliente, pedidos, status) => {
+  const url = "/pedidos";
+  return api.post(url, { idCliente, cliente, pedidos, status });
+};
 
-export const createPedido = async ( idCliente ,cliente, pedidos, status)=>{
-  const url = "/pedidos"
-  return api.post(url, {idCliente ,cliente, pedidos, status})
-}
-
-export const getPedidoCliente = async (id)=>{
-  const url = `/pedidos_cliente/${id}`
-  return api.get(url)
-}
+export const getPedidoCliente = async (id) => {
+  const url = `/pedidos_cliente/${id}`;
+  return api.get(url);
+};
 
 export const getPedidos = async () => {
   const url = "/pedidos";
   return api.get(url);
 };
 
-export const updatePedido = async (id,idCliente,cliente, pedidos, status)=>{
-  const url = '/pedidos'
-  return api.put(url, {id, idCliente, cliente, pedidos, status})
-}
+export const updatePedido = async (id, idCliente, cliente, pedidos, status) => {
+  const url = "/pedidos";
+  return api.put(url, { id, idCliente, cliente, pedidos, status });
+};
 
 export const destroyPedido = async (itemId) => {
   const url = `/pedidos/${itemId}`;
