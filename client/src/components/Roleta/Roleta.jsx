@@ -4,8 +4,10 @@ import { BiSolidDownArrow } from "react-icons/bi";
 
 import PedacoRoleta from "./PedacoRoleta";
 import "./Roleta.css";
+import { useNavigate } from "react-router-dom";
 
 const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
+  const navigate = useNavigate
 
   const [comprimento, setComprimento] = useState(1);
   const [premio, setPremio] = useState("Clique em 'GIRAR'");
@@ -14,7 +16,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
   const [moedas, setMoedas] = useState(
     JSON.parse(localStorage.getItem("moedas")) || user.moedas
   );
-  const [tickets, setTickets] = useState(3);
+  const [tickets, setTickets] = useState(1);
 
   const [situacao, setSituacao] = useState(0);
 
@@ -47,22 +49,22 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
     const graus = ((rotation % 360) + 360) % 360;
     if (graus >= 0 && graus <= 59) {
       setPremio(p6);
-      setMoedas(moedas + 6);
+      setMoedas(moedas + parseInt(p6));
     } else if (graus >= 60 && graus <= 119) {
       setPremio(p5);
-      setMoedas(moedas + 5);
+      setMoedas(moedas + parseInt(p5));
     } else if (graus >= 120 && graus <= 179) {
       setPremio(p4);
-      setMoedas(moedas + 4);
+      setMoedas(moedas + parseInt(p4));
     } else if (graus >= 180 && graus <= 239) {
       setPremio(p3);
-      setMoedas(moedas + 3);
+      setMoedas(moedas + parseInt(p3));
     } else if (graus >= 240 && graus <= 299) {
       setPremio(p2);
-      setMoedas(moedas + 50);
+      setMoedas(moedas + parseInt(p2));
     } else if (graus >= 300 && graus <= 359) {
       setPremio(p1);
-      setMoedas(moedas + 1);
+      setMoedas(moedas + parseInt(p1));
     }
   };
 
@@ -95,12 +97,12 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         }}
         onTransitionEnd={final}
       >
-        <PedacoRoleta roletaValue="1" />
-        <PedacoRoleta roletaValue="2" />
-        <PedacoRoleta roletaValue="3" />
-        <PedacoRoleta roletaValue="4" />
-        <PedacoRoleta roletaValue="5" />
-        <PedacoRoleta roletaValue="6" />
+        <PedacoRoleta roletaValue={p1} />
+        <PedacoRoleta roletaValue={p2} />
+        <PedacoRoleta roletaValue={p3} />
+        <PedacoRoleta roletaValue={p4} />
+        <PedacoRoleta roletaValue={p5} />
+        <PedacoRoleta roletaValue={p6} />
       </ul>
       <div className="premio">{premio}</div>
 
@@ -135,11 +137,11 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         <></>
       )}
 
-      {tickets === 0 && situacao === 0 && (
+      {/*tickets === 0 && situacao === 0 && (
         <button className="gift_btn" onClick={handleUpdateEconomy}>
           Coletar recompensa!
         </button>
-      )}
+      )*/}
     </div>
   );
 };
