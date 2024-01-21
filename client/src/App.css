@@ -9,6 +9,19 @@
   box-sizing: inherit;
 }
 
+::-webkit-scrollbar {
+  background:none;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: 0;
+}
+::-webkit-scrollbar-thumb {
+  border: 1px solid rgba(181, 84, 9, 0.725);
+  background: #d96b2b;
+  border-radius: 5px;
+}
+
 html,
 body,
 #root,
