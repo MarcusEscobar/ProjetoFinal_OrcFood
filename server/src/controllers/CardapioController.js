@@ -27,8 +27,6 @@ class CardapioController {
     try {
       const { id } = req.params;
       const item = await Item.findById(id);
-
-      console.log(item)
       if (!item) {
         return res.status(404).json();
       }
@@ -44,16 +42,6 @@ class CardapioController {
     try {
       const { user_id, id } = req.params;
       const { name, description, price, image, category, serve } = req.body;
-
-      // const admin_id = "12345678";
-
-      //   const admin = await User.findById(admin_id);
-
-      // if (user_id !== admin_id) {
-      //   console.log("Não autorizado");
-      //   return res.status(404).json();
-      // }
-
       const item = await Item.findById(id);
 
       if (item) {
@@ -88,13 +76,6 @@ class CardapioController {
           return res.status(404).json();
       }
 
-        // const admin_id = "12345678";
-
-        // if (user_id !== admin_id) {
-        //     console.log("Não autorizado.")
-        //     return res.status(404).json();
-        // }
-
         await item.updateOne({ name, description, price, image, category, serve });
 
         return res.status(200).json();
@@ -108,16 +89,6 @@ class CardapioController {
   async destroy(req, res) {
     try {
       const { user_id, id } = req.params;
-
-      // const admin_id = "12345678";
-
-      //   const admin = await User.findById(admin_id);
-
-      // if (user_id !== admin_id) {
-      //   console.log("Não autorizado");
-      //   return res.status(404).json();
-      // }
-
       const item = await Item.findById(id);
 
       if (!item) {

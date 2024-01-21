@@ -39,10 +39,8 @@ class PedidoController{
     async show(req, res){
         try {
             const { id } = req.params;
-            console.log(id)
 
             const pedido = await Pedido.find({ idCliente: id }); 
-            console.log(pedido)
 
             if (!pedido) {
               return res.status(404).json();
