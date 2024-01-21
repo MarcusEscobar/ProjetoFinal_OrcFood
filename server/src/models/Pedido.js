@@ -14,6 +14,10 @@ const PedidoSchema = new mongoose.Schema(
       type: Object,
       required: true,
     },
+    totalPrice:{
+      type: Number,
+      required: true
+    },
     status: {
       type: String,
       required: true,

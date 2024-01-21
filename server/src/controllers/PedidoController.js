@@ -4,9 +4,9 @@ import User from "../models/User";
 class PedidoController{
     async create(req, res){
         try {
-            const {idCliente ,cliente, pedidos, status} = req.body
+            const {idCliente ,cliente, pedidos, totalPrice, status} = req.body
 
-            const newPedido = await Pedido.create({idCliente ,cliente, pedidos , status})
+            const newPedido = await Pedido.create({idCliente ,cliente, pedidos , totalPrice, status})
             return res.status(201).json(newPedido)
 
 
@@ -19,14 +19,14 @@ class PedidoController{
 
     async update(req, res){
         try {
-            const {id, idCliente, cliente, pedidos, status } = req.body
+            const {id, idCliente, cliente, pedidos,totalPrice, status } = req.body
             const item = await Pedido.findById(id);
 
             if (!item) {
                 return res.status(404).json();
             }
 
-            await item.updateOne({ idCliente, cliente, pedidos, status });
+            await item.updateOne({ idCliente, cliente, pedidos, totalPrice, status });
 
             return res.status(200).json();
         } catch (error) {

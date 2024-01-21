@@ -6,7 +6,7 @@ import formatCurrency from "../../../utils/formatCurrency";
 import "./Pedido.css";
 
 function Pedido(item, index) {
-  const { _id, idCliente, cliente, pedidos, status } = item.item;
+  const { _id, idCliente, cliente, pedidos, totalPrice, status } = item.item;
   const { user } = useContext(AuthContext);
 
   const [edit, setEdit] = useState(false);
@@ -18,6 +18,7 @@ function Pedido(item, index) {
       idCliente,
       cliente,
       pedidos,
+      totalPrice,
       newStatus
     );
     setEdit(!edit);
@@ -29,15 +30,11 @@ function Pedido(item, index) {
       idCliente,
       cliente,
       pedidos,
+      totalPrice,
       "Cancelado"
     );
     setNewStatus("Cancelado");
   };
-
-  const totalPrice = pedidos.reduce((acc, item) => {
-    return parseFloat(item.item.price * item.quatidade) + acc;
-  }, 0.0);
-
   return (
     <tr>
       <td>

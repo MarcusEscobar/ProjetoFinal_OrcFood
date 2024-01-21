@@ -108,9 +108,9 @@ export const destroyItem = async (itemId) => {
   return api.delete(url);
 };
 
-export const createPedido = async (idCliente, cliente, pedidos, status) => {
+export const createPedido = async (idCliente, cliente, pedidos, totalPrice, status) => {
   const url = "/pedidos";
-  return api.post(url, { idCliente, cliente, pedidos, status });
+  return api.post(url, { idCliente, cliente, pedidos, totalPrice, status });
 };
 
 export const getPedidoCliente = async (id) => {
@@ -123,9 +123,9 @@ export const getPedidos = async () => {
   return api.get(url);
 };
 
-export const updatePedido = async (id, idCliente, cliente, pedidos, status) => {
+export const updatePedido = async (id, idCliente, cliente, pedidos,totalPrice, status) => {
   const url = "/pedidos";
-  return api.put(url, { id, idCliente, cliente, pedidos, status });
+  return api.put(url, { id, idCliente, cliente, pedidos,totalPrice, status });
 };
 
 export const destroyPedido = async (itemId) => {

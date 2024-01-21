@@ -85,7 +85,7 @@ function Cart() {
     } else {
       toast.success("Pedido finalizado", { position: "bottom-center" });
       toast.info("Você ganhou 1 Ticket", { position: "bottom-center" });
-      await createPedido(user.id, user, cartItems, "Pendente");
+      await createPedido(user.id, user, cartItems, priceDesconto, "Pendente");
       localStorage.setItem("cartItems", JSON.stringify({ cartItems: [] }));
       setCartItems([]);
       removerCupom();
