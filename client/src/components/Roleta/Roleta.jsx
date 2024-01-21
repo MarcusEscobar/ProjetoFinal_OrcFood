@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { updateUser } from "../../services/api";
-import { BiSolidDownArrow } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+
+import { updateUserEconomy } from "../../services/api";
+import "./Roleta.css";
 
 import PedacoRoleta from "./PedacoRoleta";
-import "./Roleta.css";
-import { useNavigate } from "react-router-dom";
+import { BiSolidDownArrow } from "react-icons/bi";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
   const navigate = useNavigate
@@ -44,104 +49,112 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
     setRotation(rotation + comprimento + novaRotacao);
   };
 
-  const final = () => {
-    setSituacao(0);
-    const graus = ((rotation % 360) + 360) % 360;
-    if (graus >= 0 && graus <= 59) {
-      setPremio(p6);
-      setMoedas(moedas + parseInt(p6));
-    } else if (graus >= 60 && graus <= 119) {
-      setPremio(p5);
-      setMoedas(moedas + parseInt(p5));
-    } else if (graus >= 120 && graus <= 179) {
-      setPremio(p4);
-      setMoedas(moedas + parseInt(p4));
-    } else if (graus >= 180 && graus <= 239) {
-      setPremio(p3);
-      setMoedas(moedas + parseInt(p3));
-    } else if (graus >= 240 && graus <= 299) {
-      setPremio(p2);
-      setMoedas(moedas + parseInt(p2));
-    } else if (graus >= 300 && graus <= 359) {
-      setPremio(p1);
-      setMoedas(moedas + parseInt(p1));
-    }
-  };
-
   const handleUpdateEconomy = async () => {
     try {
-      await updateUser(
+      await updateUserEconomy(
         user.id,
-        user.name,
-        user.endereco,
-        user.email,
-        user.password,
         (user.moedas = moedas),
-        (user.tickets = tickets)
+        (user.tickets = tickets),
+        user.cupons.c10,
+        user.cupons.c20,
+        user.cupons.c30,
       );
-      // localStorage.setItem('moedas', 0);
-      // localStorage.setItem('user', user);
+
+      toast.success('Recompensa coletada!');
+      console.log("UpdateNow");
+      console.log(user);
+
     } catch (err) {
       console.error(err);
     }
   };
 
+  const final = () => {
+    setSituacao(0);
+    const graus = ((rotation % 360) + 360) % 360;
+    if (graus >= 0 && graus <= 59) {
+      setPremio(`Último prêmio: ${p6} moedas.`);
+      setMoedas(moedas + 6);
+    } else if (graus >= 60 && graus <= 119) {
+      setPremio(`Último prêmio: ${p5} moedas.`);
+      setMoedas(moedas + 5);
+    } else if (graus >= 120 && graus <= 179) {
+      setPremio(`Último prêmio: ${p4} moedas.`);
+      setMoedas(moedas + 4);
+    } else if (graus >= 180 && graus <= 239) {
+      setPremio(`Último prêmio: ${p3} moedas.`);
+      setMoedas(moedas + 3);
+    } else if (graus >= 240 && graus <= 299) {
+      setPremio(`Último prêmio: ${p2} moedas.`);
+      setMoedas(moedas + 2);
+    } else if (graus >= 300 && graus <= 359) {
+      setPremio(`Último prêmio: ${p1} moedas.`);
+      setMoedas(moedas + 1);
+    }
+    console.log(user.id, moedas, tickets);
+    handleUpdateEconomy();
+  };
+
   return (
     <div className="roleta_container">
-      <BiSolidDownArrow />
-      <ul
-        className="circle"
-        style={{
-          transform: `rotate(${rotation}deg)`,
-          transition: "transform 6s cubic-bezier(0.2,0.8,0.7,0.99)",
-        }}
-        onTransitionEnd={final}
-      >
-        <PedacoRoleta roletaValue={p1} />
-        <PedacoRoleta roletaValue={p2} />
-        <PedacoRoleta roletaValue={p3} />
-        <PedacoRoleta roletaValue={p4} />
-        <PedacoRoleta roletaValue={p5} />
-        <PedacoRoleta roletaValue={p6} />
-      </ul>
-      <div className="premio">{premio}</div>
-
-      {situacao === 0 && tickets !== 0 && (
-        <div className="barra1">
-          <div className="barra_dentro" ref={barraRef}></div>
+      
+      <div className="roleta_info">
+        {user.moedas ? (
+          <div>
+            <div className="moedas">
+              <div className="div_moeda">$</div>: <p>{moedas}</p>
+            </div>
+            <div className="tickets">
+              <div className="div_ticket">Ticket</div>: <p>{tickets}</p>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+        <div className="fimTickets">
+          {tickets === 0 && situacao === 0 && (
+            <>
+            <p>Não há mais tickets disponíveis.</p> 
+            <p>Você possui {moedas} moedas.</p>
+            </>
+          )}
         </div>
-      )}
-
-      <div className="barraInferior">
-        {tickets > 0 && situacao === 0 && (
-          <button className="spin_btn" onClick={startRotation}>
-            GIRAR
-          </button>
-        )}
-        {tickets === 0 && situacao === 0 && (
-          <p>Não há mais tickets disponíveis. Você possui {moedas} moedas.</p>
-        )}
+        {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={handleUpdateEconomy}>Coletar recompensa!</button>}
       </div>
-      <div className="central"></div>
 
-      {user.moedas ? (
-        <div>
-          <div className="moedas">
-            <div className="div_moeda">$</div>: <p>{moedas}</p>
-          </div>
-          <div className="tickets">
-            <div className="div_ticket">Ticket</div>: <p>{tickets}</p>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
+      <div className="roleta_principal">
+        <BiSolidDownArrow />
+        <ul
+          className="circle"
+          style={{
+            transform: `rotate(${rotation}deg)`,
+            transition: "transform 6s cubic-bezier(0.2,0.8,0.7,0.99)",
+          }}
+          onTransitionEnd={final}
+        >
+          <PedacoRoleta roletaValue="1" />
+          <PedacoRoleta roletaValue="2" />
+          <PedacoRoleta roletaValue="3" />
+          <PedacoRoleta roletaValue="4" />
+          <PedacoRoleta roletaValue="5" />
+          <PedacoRoleta roletaValue="6" />
+        </ul>
+        <p className="premio">{premio}</p>
 
-      {/*tickets === 0 && situacao === 0 && (
-        <button className="gift_btn" onClick={handleUpdateEconomy}>
-          Coletar recompensa!
-        </button>
-      )*/}
+        {situacao === 0 && tickets !== 0 && (
+          <div className="barra1">
+            <div className="barra_dentro" ref={barraRef}></div>
+          </div>
+        )}
+        {tickets > 0 && situacao === 0 && (
+            <button className='spin_btn' onClick={startRotation}>
+              GIRAR
+            </button>
+        )}
+        
+        <div className='central'></div>
+      </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -15,8 +15,10 @@ const CupomComprar = ({ desconto, onSale, preco, qtd, color, border }) => {
       </div>
 
       <p>Preço: ${preco}.</p>
-      <p>Comprados: {qtd}</p>
-      <button onClick={() => onSale(desconto)}>Comprar</button>
+      <span>
+        <p>Comprados: {qtd}</p>
+        <button onClick={() => onSale(desconto)}>Comprar</button>
+      </span>
     </div>
   );
 };
