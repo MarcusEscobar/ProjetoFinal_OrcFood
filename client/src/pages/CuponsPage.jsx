@@ -13,67 +13,97 @@ import "../styles/CuponsPage.css";
 const CuponsPage = () => {
   const { user } = useContext(AuthContext);
 
-  const [moedas, setMoedas] = useState(
-    JSON.parse(localStorage.getItem("moedas")) || user.moedas
-  );
-  const [cupom10, setCupom10] = useState(
-    JSON.parse(localStorage.getItem("c10")) || user.cupons.c10
-  );
-  const [cupom20, setCupom20] = useState(
-    JSON.parse(localStorage.getItem("c20")) || user.cupons.c20
-  );
-  const [cupom30, setCupom30] = useState(
-    JSON.parse(localStorage.getItem("c30")) || user.cupons.c30
-  );
+  const [moedas, setMoedas] = useState(parseInt(localStorage.getItem("moedas")));
+  const [cupom10, setCupom10] = useState(parseInt(localStorage.getItem("c10"))  );
+  const [cupom20, setCupom20] = useState(parseInt(localStorage.getItem("c20")) );
+  const [cupom30, setCupom30] = useState(  parseInt(localStorage.getItem("c30")) );
+
+  console.log(cupom10)
+  console.log(cupom20)
+  console.log(cupom30)
+
+/*
+useEffect(() => {
+  localStorage.setItem("moedas", moedas.toString());
+  localStorage.setItem("c10", cupom10);
+  localStorage.setItem("c20", cupom20);
+  localStorage.setItem("c30", cupom30);
+
+  if (moedas < 0 || user.moedas < 0) {
+    setMoedas(0);
+
+    (async () =>
+      await updateUserEconomy(
+        user.id,
+        (user.moedas = 0),
+        user.tickets,
+        user.cupons.c10,
+        user.cupons.c20,
+        user.cupons.c30
+      ))();
+  }
+}, [moedas, cupom10, cupom20, cupom30]);
+
+*/
 
 
-  useEffect(() => {
-    localStorage.setItem("moedas", moedas.toString());
-    localStorage.setItem("c10", cupom10);
-    localStorage.setItem("c20", cupom20);
-    localStorage.setItem("c30", cupom30);
-
-    if (moedas < 0 || user.moedas < 0) {
-      setMoedas(0);
-
-      (async () =>
-        await updateUserEconomy(
-          user.id,
-          (user.moedas = 0),
-          user.tickets,
-          user.cupons.c10,
-          user.cupons.c20,
-          user.cupons.c30
-        ))();
-    }
-  }, [moedas, cupom10, cupom20, cupom30]);
 
 
   const handleSale = async (desconto) => {
     if (moedas - desconto >= 0) {
       try {
         if (desconto === 10) {
-          setMoedas(moedas - 10);
-          setCupom10(cupom10 + 1);
+          const qtdc10 = cupom10 +1
+          const qtdMoedas = moedas - 10
+          setMoedas(qtdMoedas);
+          setCupom10(qtdc10);
+          const response= await updateUserEconomy(
+            user.id,
+            qtdMoedas,
+            user.tickets,
+            qtdc10,
+            cupom20,
+            cupom30
+          );
+          console.log(response)
+          localStorage.setItem("moedas", qtdMoedas);
+          localStorage.setItem("c10", qtdc10);
 
         } else if (desconto === 20) {
-          setMoedas(moedas - 20);
-          setCupom20(cupom20 + 1);
+          const qtdc20 = cupom20 +1
+          const qtdMoedas = moedas - 20
+          setMoedas(qtdMoedas);
+          setCupom20(qtdc20);
+          const response= await updateUserEconomy(
+            user.id,
+            qtdMoedas,
+            user.tickets,
+            cupom10,
+            qtdc20,
+            cupom30
+          );
+          console.log(response)
+          localStorage.setItem("moedas", qtdMoedas);
+          localStorage.setItem("c20", qtdc20);
 
         } else if (desconto === 30) {
-          setMoedas(moedas - 30);
-          setCupom30(cupom30 + 1);
+          const qtdc30 = cupom30 +1
+          const qtdMoedas = moedas - 30
+          setMoedas(qtdMoedas);
+          setCupom30(qtdc30);
+          const response= await updateUserEconomy(
+            user.id,
+            qtdMoedas,
+            user.tickets,
+            cupom10,
+            cupom20,
+            qtdc30
+          );
+          console.log(response)
+          localStorage.setItem("moedas", qtdMoedas);
+          localStorage.setItem("c30", qtdc30);
 
         }
-        await updateUserEconomy(
-          user.id,
-          (user.moedas = moedas),
-          user.tickets,
-          (user.cupons.c10 = cupom10),
-          (user.cupons.c20 = cupom20),
-          (user.cupons.c30 = cupom30)
-        );
-
         toast.success("Cupom comprado com sucesso!");
       } catch (err) {
         console.error(err);
