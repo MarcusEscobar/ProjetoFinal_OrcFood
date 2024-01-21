@@ -32,6 +32,11 @@ export const AuthProvider = ({ children })=>{
        api.defaults.headers.common.Authorization  = `Bearer ${response.data.token}`
 
        setUser(response.data.user)
+       
+       localStorage.setItem('moedas', response.data.user.moedas);
+       localStorage.setItem('c10', response.data.user.cupons.c10);
+       localStorage.setItem('c20', response.data.user.cupons.c20);
+       localStorage.setItem('c30', response.data.user.cupons.c30);
 
        navigate('/')
     }
