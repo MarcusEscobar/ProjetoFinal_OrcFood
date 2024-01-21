@@ -25,6 +25,7 @@ Depois instale as dependencias. Execute o comando:
 ~~~~
 npm install
 ~~~~
+Agora dentro da pasta server crie um arquivo .env seguindo as variaveis definidas em .env.exemple
 
 
 
