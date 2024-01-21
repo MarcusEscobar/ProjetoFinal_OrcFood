@@ -89,10 +89,10 @@ header .icone_hamburguer {
 }
 
 @media (max-width: 735px) {
-  header h2, header ul {
+  header h2, header li {
     display: none;
   }
-  header .icone_hamburguer {
+  header .icone_carrinho, header .icone_hamburguer {
     display: inline;
   }
 
