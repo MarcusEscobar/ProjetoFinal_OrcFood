@@ -12,31 +12,25 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
+
   const navigate = useNavigate
 
   const [comprimento, setComprimento] = useState(1);
   const [premio, setPremio] = useState("Clique em 'GIRAR'");
   const [rotation, setRotation] = useState(0);
 
-  const [moedas, setMoedas] = useState(
-    JSON.parse(localStorage.getItem("moedas")) || user.moedas
-  );
-  const [tickets, setTickets] = useState(
-    JSON.parse(localStorage.getItem("tickets")) 
-  );
+  const [coin, setCoin] = useState(parseInt(localStorage.getItem("moedas")));
+  const [tickets, setTickets] = useState(parseInt(localStorage.getItem("tickets")));
 
   const [situacao, setSituacao] = useState(0);
 
-  useEffect(() => {
-    localStorage.setItem("moedas", moedas.toString());
-    localStorage.setItem("tickets", tickets.toString());
-  }, [moedas, tickets]);
 
   const barraRef = useRef(null);
 
   const startRotation = () => {
     if (barraRef.current) {
       setTickets(tickets - 1);
+      localStorage.setItem("tickets", tickets - 1);
       barraRef.current.classList.toggle("parar");
       const width2 = barraRef.current.getBoundingClientRect().width;
       setComprimento(width2);
@@ -52,48 +46,69 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
   };
 
   const handleUpdateEconomy = async () => {
+    const m = parseInt(localStorage.getItem("moedas"))
     try {
       await updateUserEconomy(
         user.id,
-        (user.moedas = moedas),
-        (user.tickets = tickets),
+        m,
+        tickets,
         user.cupons.c10,
         user.cupons.c20,
         user.cupons.c30,
       );
-      localStorage.setItem("moedas", moedas.toString());
-      localStorage.setItem("tickets", tickets.toString());
       console.log("UpdateNow");
-      console.log(user);
 
     } catch (err) {
       console.error(err);
     }
   };
 
-  const final = () => {
+  const final = async () => {
     setSituacao(0);
     const graus = ((rotation % 360) + 360) % 360;
+
     if (graus >= 0 && graus <= 59) {
       setPremio(`Último prêmio: ${p6} moedas.`);
-      setMoedas(moedas + 6);
+      const m = coin +6
+      setCoin(m);
+      localStorage.setItem("moedas", m);
+
+
     } else if (graus >= 60 && graus <= 119) {
       setPremio(`Último prêmio: ${p5} moedas.`);
-      setMoedas(moedas + 5);
+      const m = coin +5
+      setCoin(m);
+      localStorage.setItem("moedas", m);
+
+
     } else if (graus >= 120 && graus <= 179) {
       setPremio(`Último prêmio: ${p4} moedas.`);
-      setMoedas(moedas + 4);
+      const m = coin +4
+      setCoin(m);
+      localStorage.setItem("moedas", m);
+   
+
     } else if (graus >= 180 && graus <= 239) {
       setPremio(`Último prêmio: ${p3} moedas.`);
-      setMoedas(moedas + 3);
+      const m = coin +3
+      setCoin(m);
+      localStorage.setItem("moedas", m);
+
+
     } else if (graus >= 240 && graus <= 299) {
       setPremio(`Último prêmio: ${p2} moedas.`);
-      setMoedas(moedas + 2);
+      const m = coin +2
+      setCoin(m);
+      localStorage.setItem("moedas", m);
+   
+
     } else if (graus >= 300 && graus <= 359) {
       setPremio(`Último prêmio: ${p1} moedas.`);
-      setMoedas(moedas + 1);
+      const m = coin +1
+      setCoin(m);
+      localStorage.setItem("moedas", m);
+ 
     }
-    console.log(user.id, moedas, tickets);
     handleUpdateEconomy();
   };
 
@@ -110,7 +125,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         {user.moedas ? (
           <div>
             <div className="moedas">
-              <div className="div_moeda">$</div>: <p>{moedas}</p>
+              <div className="div_moeda">$</div>: <p>{coin}</p>
             </div>
             <div className="tickets">
               <div className="div_ticket">Ticket</div>: <p>{tickets}</p>
@@ -123,7 +138,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
           {tickets === 0 && (
             <>
             <p>Não há mais tickets disponíveis.</p> 
-            <p>Você possui {moedas} moedas.</p>
+            <p>Você possui {coin} moedas.</p>
             </>
           )}
         </div>
@@ -149,18 +164,19 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         </ul>
         <p className="premio">{premio}</p>
 
-        {situacao === 0 && tickets !== 0 && (
-          <div className="barra1">
-            <div className="barra_dentro" ref={barraRef}></div>
-          </div>
-        )}
-        {tickets > 0 && situacao === 0 && (
+        
+          <div className="girar_roleta">
+          {tickets > 0 && situacao === 0 && (
             <button className='spin_btn' onClick={startRotation}>
               GIRAR
-            </button>
-        )}
+            </button> )}
+          {situacao === 0 && tickets !== 0 && ( 
+            <div className="barra1">
+              <div className="barra_dentro" ref={barraRef}></div> 
+            </div> )}
+          </div>
         
-        <div className='central'></div>
+        {/* <div className='central'></div> */}
       </div>
       <ToastContainer position="bottom-left" />
     </div>
