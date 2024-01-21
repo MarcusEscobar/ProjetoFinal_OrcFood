@@ -33,7 +33,18 @@ mongodb+srv://admin:50r7CZ3cdysrETPi@cardapio.cqgtenm.mongodb.net/?retryWrites=t
 E o campo APP_SECRET é a chave para a criptografia das senhas dos usuários, associe essa variável a seguinte valor:
 T3JjRm9vZCBhcHAgc2VjcmV0
 
-
+## Iniciando a aplicaão
+Para rodar a aplicação é nescessário execultar tanto o backend quanto o frontend ao mesmo tempo para isso utilize dois terminais.
+Para rodar o backend execulte os seguintes comandos :
+~~~~
+cd ..
+~~~~
+~~~~
+cd server
+~~~~
+~~~~
+npm run dev
+~~~~
 
 
 
