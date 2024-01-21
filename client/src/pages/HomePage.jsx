@@ -66,6 +66,7 @@ const HomePage = () => {
           onDeleteItem={handleDeleteItem}
         />
       </div>
+      <Cart />
     </div>
   );
 };
