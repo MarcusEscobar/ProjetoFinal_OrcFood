@@ -135,9 +135,9 @@ function Cart() {
             }}
           >
             <option value={0}>sem desconto</option>
-            {c10 && <option value={10}>10% de desconto <span className="qtdCupons">(x{localStorage.getItem('c10')})</span></option>}
-            {c20 && <option value={20}>20% de desconto <span className="qtdCupons">(x{localStorage.getItem('c20')})</span></option>}
-            {c30 && <option value={30}>30% de desconto <span className="qtdCupons">(x{localStorage.getItem('c30')})</span></option>}
+            {c10 && <option value={10}>10% de desconto <span className="qtdCupons">(x{c10})</span></option>}
+            {c20 && <option value={20}>20% de desconto <span className="qtdCupons">(x{c20})</span></option>}
+            {c30 && <option value={30}>30% de desconto <span className="qtdCupons">(x{c30})</span></option>}
           </select>
         </div> 
         {formatCurrency(priceDesconto, "BRL")}{" "}
