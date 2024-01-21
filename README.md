@@ -36,22 +36,14 @@ Para rodar a aplicação é nescessário execultar tanto o backend quanto o fron
 Para rodar o backend execulte os seguintes comandos :
 ~~~~
 cd ..
-~~~~
-~~~~
 cd server
-~~~~
-~~~~
 npm run dev
 ~~~~
 
 E para rodar o frontent utilize:
 ~~~~
 cd ..
-~~~~
-~~~~
 cd client
-~~~~
-~~~~
 npm run dev
 ~~~~
 
@@ -82,9 +74,10 @@ npm run dev
 
 ### Monitoramento de Pedidos: Todos os pedidos são centralizados para os administradores, que podem editar os status para "pendente", "em andamento" ou "concluído".
 
-Para acessar a conta como administrador faça o login utilizando as seguintes informações:
-email: admin@gmail.com
-senha: admin123
+Para acessar a conta como administrador, faça o login utilizando as seguintes informações:
+
+Email: admin@gmail.com
+Senha: admin123
 
 
 
