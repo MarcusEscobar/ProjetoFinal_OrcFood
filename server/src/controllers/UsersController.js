@@ -75,6 +75,7 @@ class UsersController {
         endereco,
         email,
         password,
+        scope,
         moedas,
         tickets,
         c10,
@@ -95,6 +96,7 @@ class UsersController {
         endereco,
         email,
         password: encryptedPassword,
+        scope,
         moedas,
         tickets,
         cupons: {

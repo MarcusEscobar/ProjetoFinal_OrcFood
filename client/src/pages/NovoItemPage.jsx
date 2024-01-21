@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { createItem, updateItem } from "../services/api";
 import { ToastContainer, toast } from "react-toastify";
+import "../styles/NovoItemPage.css";
 
 import Navbar from "../components/Navbar";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/NovoItemPage.css";
 
 const NovoItemPage = () => {
   const [id, setId] = useState("");
