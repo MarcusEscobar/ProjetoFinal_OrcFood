@@ -164,18 +164,19 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         </ul>
         <p className="premio">{premio}</p>
 
-        {situacao === 0 && tickets !== 0 && (
-          <div className="barra1">
-            <div className="barra_dentro" ref={barraRef}></div>
-          </div>
-        )}
-        {tickets > 0 && situacao === 0 && (
+        
+          <div className="girar_roleta">
+          {tickets > 0 && situacao === 0 && (
             <button className='spin_btn' onClick={startRotation}>
               GIRAR
-            </button>
-        )}
+            </button> )}
+          {situacao === 0 && tickets !== 0 && ( 
+            <div className="barra1">
+              <div className="barra_dentro" ref={barraRef}></div> 
+            </div> )}
+          </div>
         
-        <div className='central'></div>
+        {/* <div className='central'></div> */}
       </div>
       <ToastContainer position="bottom-left" />
     </div>
