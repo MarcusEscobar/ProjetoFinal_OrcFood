@@ -12,8 +12,8 @@ function UserPage() {
     const c20 = parseInt(localStorage.getItem('c20'))
     const c30 = parseInt(localStorage.getItem('c30'))
     const moedas = parseInt(localStorage.getItem('moedas'))
-    const tickets = parseInt(localStorage.getItem('tickets'))
-
+    const tickets = parseInt(localStorage.getItem('tickets')
+)
 
 
     return ( 
