@@ -17,8 +17,6 @@ Com as dependencias do frontend instaladas com sucesso vamos então configurar o
 Volte a pasta ProjetoFinal_OrcFood e depois entre na pasta server
 ~~~~
 cd ..
-~~~~
-~~~~
 cd server
 ~~~~
 Depois instale as dependencias. Execute o comando:
