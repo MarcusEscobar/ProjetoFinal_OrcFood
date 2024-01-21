@@ -8,7 +8,6 @@ import { deleteUser } from "../services/api";
 function UserPage() {
     const navigate = useNavigate()
     const {user, logout} = useContext(AuthContext)
-    console.log(user)
     const c10 = parseInt(localStorage.getItem('c10'))
     const c20 = parseInt(localStorage.getItem('c20'))
     const c30 = parseInt(localStorage.getItem('c30'))

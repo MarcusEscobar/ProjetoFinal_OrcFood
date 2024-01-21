@@ -56,7 +56,6 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         user.cupons.c20,
         user.cupons.c30,
       );
-      console.log("UpdateNow");
 
     } catch (err) {
       console.error(err);
