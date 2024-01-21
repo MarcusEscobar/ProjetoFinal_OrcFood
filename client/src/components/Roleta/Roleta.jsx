@@ -21,7 +21,9 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
   const [moedas, setMoedas] = useState(
     JSON.parse(localStorage.getItem("moedas")) || user.moedas
   );
-  const [tickets, setTickets] = useState(1);
+  const [tickets, setTickets] = useState(
+    JSON.parse(localStorage.getItem("tickets")) || user.tickets
+  );
 
   const [situacao, setSituacao] = useState(0);
 
