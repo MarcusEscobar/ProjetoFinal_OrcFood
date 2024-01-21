@@ -1,29 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { updateUser } from "../../services/api";
-import "./Roleta.css";
-
-import PedacoRoleta from "./PedacoRoleta";
 import { BiSolidDownArrow } from "react-icons/bi";
 
-const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
+import PedacoRoleta from "./PedacoRoleta";
+import "./Roleta.css";
 
-  console.log(user);
-  console.log("id", user.id);
-  console.log('moedas', user.moedas);
+const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
 
   const [comprimento, setComprimento] = useState(1);
   const [premio, setPremio] = useState("Clique em 'GIRAR'");
   const [rotation, setRotation] = useState(0);
 
-  const [moedas, setMoedas] = useState(JSON.parse(localStorage.getItem('moedas')) || user.moedas);
+  const [moedas, setMoedas] = useState(
+    JSON.parse(localStorage.getItem("moedas")) || user.moedas
+  );
   const [tickets, setTickets] = useState(3);
 
   const [situacao, setSituacao] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem('moedas', moedas.toString());
-    localStorage.setItem('tickets', tickets.toString());
-  }, [moedas, tickets]); 
+    localStorage.setItem("moedas", moedas.toString());
+    localStorage.setItem("tickets", tickets.toString());
+  }, [moedas, tickets]);
 
   const barraRef = useRef(null);
 
@@ -66,7 +64,6 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
       setPremio(p1);
       setMoedas(moedas + 1);
     }
-    console.log(user.id, moedas, tickets);
   };
 
   const handleUpdateEconomy = async () => {
@@ -80,8 +77,6 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         (user.moedas = moedas),
         (user.tickets = tickets)
       );
-      console.log("UpdateNow");
-      console.log(user);
       // localStorage.setItem('moedas', 0);
       // localStorage.setItem('user', user);
     } catch (err) {
@@ -140,7 +135,11 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         <></>
       )}
 
-      {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={handleUpdateEconomy}>Coletar recompensa!</button>}
+      {tickets === 0 && situacao === 0 && (
+        <button className="gift_btn" onClick={handleUpdateEconomy}>
+          Coletar recompensa!
+        </button>
+      )}
     </div>
   );
 };

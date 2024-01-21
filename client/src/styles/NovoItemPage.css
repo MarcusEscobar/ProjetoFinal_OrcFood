@@ -1,7 +1,7 @@
-.novo_item { 
+.novo_item {
   max-width: 600px;
   height: 550px;
-  margin:80px auto;
+  margin: 80px auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 4px 4px 20px#aaaa;
@@ -14,7 +14,9 @@
   display: block;
 }
 
-.novo_item input, select, textarea {
+.novo_item input,
+select,
+textarea {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
@@ -25,9 +27,9 @@
 }
 
 .novo_item label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 button.btn-item {

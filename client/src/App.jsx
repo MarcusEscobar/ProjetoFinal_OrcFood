@@ -1,16 +1,12 @@
-import React from 'react'
+import { ToastContainer, toast } from "react-toastify";
 
-import AppRoutes from './routes.jsx'
-import './App.css'
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import AppRoutes from "./routes.jsx";
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
-  return (
-    <AppRoutes/>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;

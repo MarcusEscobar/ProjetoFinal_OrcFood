@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 // import { useNavigate } from "react-router-dom";
 
-import "../styles/components/Search.css";
+import "./Search.css";
 
 const Search = ({ onSearch }) => {
-
   const [query, setQuery] = useState("");
   // const navigate = useNavigate();
 
@@ -16,7 +15,9 @@ const Search = ({ onSearch }) => {
 
   return (
     <div className="search">
-      <label htmlFor="query"><IoIosSearch /></label>
+      <label htmlFor="query">
+        <IoIosSearch />
+      </label>
       <input
         type="text"
         name="query"
@@ -24,8 +25,12 @@ const Search = ({ onSearch }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button type="button" onClick={handleClear}>Limpar</button>
-      <button type="button" onClick={() => onSearch(query)}>Procurar</button>
+      <button type="button" onClick={handleClear}>
+        Limpar
+      </button>
+      <button type="button" onClick={() => onSearch(query)}>
+        Procurar
+      </button>
     </div>
   );
 };

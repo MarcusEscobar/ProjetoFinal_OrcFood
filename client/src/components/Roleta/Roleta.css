@@ -1,178 +1,179 @@
-.roleta_container, .barraInferior {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.roleta_container,
+.barraInferior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .pedacoRoleta:first-child .text {
-    background-color: violet;
+  background-color: violet;
 }
 .pedacoRoleta:nth-child(2) .text {
-    background-color: indigo;
+  background-color: indigo;
 }
 .pedacoRoleta:nth-child(3) .text {
-    background-color: blue;
+  background-color: blue;
 }
 .pedacoRoleta:nth-child(4) .text {
-    background-color: green;
+  background-color: green;
 }
 .pedacoRoleta:nth-child(5) .text {
-    background-color: yellow;
+  background-color: yellow;
 }
 .pedacoRoleta:nth-child(6) .text {
-    background-color: orange;
+  background-color: orange;
 }
 
 .pedacoRoleta:first-child {
-    transform: rotate(0deg) skewY(-30deg);
+  transform: rotate(0deg) skewY(-30deg);
 }
 .pedacoRoleta:nth-child(2) {
-    transform: rotate(60deg) skewY(-30deg);
+  transform: rotate(60deg) skewY(-30deg);
 }
 .pedacoRoleta:nth-child(3) {
-    transform: rotate(120deg) skewY(-30deg);
+  transform: rotate(120deg) skewY(-30deg);
 }
 .pedacoRoleta:nth-child(4) {
-    transform: rotate(180deg) skewY(-30deg);
+  transform: rotate(180deg) skewY(-30deg);
 }
 .pedacoRoleta:nth-child(5) {
-    transform: rotate(240deg) skewY(-30deg);
+  transform: rotate(240deg) skewY(-30deg);
 }
 .pedacoRoleta:nth-child(6) {
-    transform: rotate(300deg) skewY(-30deg);
+  transform: rotate(300deg) skewY(-30deg);
 }
 
 .circle {
-    width: 25em;
-    height: 25em;
-    border: 1px solid black;
-    position: relative;
-    padding: 0;
-    margin: 1em auto;
-    border-radius: 50%;
-    list-style: none;
-    overflow: hidden;
+  width: 25em;
+  height: 25em;
+  border: 1px solid black;
+  position: relative;
+  padding: 0;
+  margin: 1em auto;
+  border-radius: 50%;
+  list-style: none;
+  overflow: hidden;
 }
 .pedacoRoleta {
-    overflow: hidden;
-    position: absolute;
-    top: -200px;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    transform-origin: 0% 100%;
-    cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  top: -200px;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  transform-origin: 0% 100%;
+  cursor: pointer;
 }
 .text {
-    position: absolute;
-    left: -100%;
-    width: 200%;
-    height: 200%;
-    text-align: center;
-    display: block;
-    transform: skewY(40deg) rotate(25deg);
-    padding-top: 250px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 18px;
+  position: absolute;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  text-align: center;
+  display: block;
+  transform: skewY(40deg) rotate(25deg);
+  padding-top: 250px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
 }
 .spin_btn {
-    width: 120px;
-    height: 40px;
-    border-radius: 30px;
-    margin-top: 20px;
-    cursor: pointer;
-    outline: none;
-    font-size: 18px;
+  width: 120px;
+  height: 40px;
+  border-radius: 30px;
+  margin-top: 20px;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
 }
 .central {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: lightgray;
-    border-radius: 50%;
-    text-align: center;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 39.5%;
-    font-weight: bold;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  border-radius: 50%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 39.5%;
+  font-weight: bold;
 }
 .barra1 {
-    background-color: #444444;
-    width: 250px;
-    min-height: 20px;
-    border-radius: 12px;
-    padding: 4px;
-    margin: 15px auto 10px;
+  background-color: #444444;
+  width: 250px;
+  min-height: 20px;
+  border-radius: 12px;
+  padding: 4px;
+  margin: 15px auto 10px;
 }
 .barra_dentro {
-    border-radius: 8px;
-    width: 0%;
-    height: 20px;
-    background-color: orange;
-    animation-name: animacaoBarra;
-    animation-duration: 0.8s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
+  border-radius: 8px;
+  width: 0%;
+  height: 20px;
+  background-color: orange;
+  animation-name: animacaoBarra;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
 }
 .parar {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
-@keyframes animacaoBarra{
-    0% {
-        width: 0%;
-    }
-    50% {
-        width: 100%;
-    }
-    100% {
-        width: 0%;
-    }
+@keyframes animacaoBarra {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
 
 .editarPremios {
-    position: absolute;
-    left: 2%;
+  position: absolute;
+  left: 2%;
 }
 
 .setarPremio {
-    margin-top: 10px;;
+  margin-top: 10px;
 }
 
 .moedas {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 10%;
-    left: 2%;
-    font-size: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  font-size: 2em;
 }
 .tickets {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 20%;
-    left: 2%;
-    font-size: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 2%;
+  font-size: 2em;
 }
 .div_moeda {
-    font-weight: bold;
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    border: 5px solid orange;
-    border-radius: 50%;
-    text-align: center;
-    padding: 1px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  background-color: yellow;
+  border: 5px solid orange;
+  border-radius: 50%;
+  text-align: center;
+  padding: 1px;
 }
 .div_ticket {
-    font-size: .5em;
-    width: 50px;
-    height: 25px;
-    background-color: rgb(58, 58, 255);
-    border: 3px solid blue;
+  font-size: 0.5em;
+  width: 50px;
+  height: 25px;
+  background-color: rgb(58, 58, 255);
+  border: 3px solid blue;
 }
 
 /* .start-rotate {
@@ -183,4 +184,3 @@
         transform: rotate(360deg);
     }
 } */
-

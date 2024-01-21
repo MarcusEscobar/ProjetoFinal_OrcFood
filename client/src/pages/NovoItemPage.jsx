@@ -4,7 +4,7 @@ import { createItem, updateItem } from "../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "../styles/NovoItemPage.css";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import "react-toastify/dist/ReactToastify.css";
 
 const NovoItemPage = () => {
@@ -48,7 +48,6 @@ const NovoItemPage = () => {
   };
 
   const handleNewItem = async () => {
-    console.log("new item");
     try {
       notify();
       await createItem(name, description, price, image, category, serve);

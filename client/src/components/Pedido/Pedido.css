@@ -1,9 +1,9 @@
-.containerPedidos{
-    height: 100vh;
-    margin-top:5rem;
-    display: flex;
-    justify-content: center;
-    align-items: start;
+.containerPedidos {
+  height: 100vh;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .tablePedidos{
@@ -25,20 +25,20 @@ th p{
     justify-content: center;
 }
 
-.listaPedidos{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.listaPedidos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.btnPedidos{
-    margin: 5px;
-    width: 60px;
-    height: 25px;
-    font-size: 13px;
-    border: none;
-    border-radius: 6px;
-    background: #37a6a6;
-    color: white;
+.btnPedidos {
+  margin: 5px;
+  width: 60px;
+  height: 25px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  background: #37a6a6;
+  color: white;
 }

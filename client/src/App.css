@@ -1,11 +1,12 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-*::after, *::before {
-    box-sizing: inherit;
+*::after,
+*::before {
+  box-sizing: inherit;
 }
 
 html,
@@ -17,38 +18,38 @@ body,
 }
 
 .main_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 75%;
-    padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75%;
+  padding-top: 60px;
 }
 
-.container{
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.banner_container {
-    width: 100%;
-}
-
-.banner_container img {
-    width: 100%;
-    height: auto;
-}
-
-a{
-    text-decoration: none;
-    color: blue;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .banner_container {
-    width: 100%;
+  width: 100%;
 }
 
 .banner_container img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+.banner_container {
+  width: 100%;
+}
+
+.banner_container img {
+  width: 100%;
+  height: auto;
 }

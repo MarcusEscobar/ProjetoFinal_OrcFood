@@ -5,11 +5,11 @@
 .filtro--active {
   display: flex;
   align-items: center;
-  justify-content: center ;
+  justify-content: center;
   flex-direction: column;
 }
 
-.contaiderButtons button{
+.contaiderButtons button {
   width: 130px;
   height: 30px;
   border-radius: 10px;
@@ -17,8 +17,8 @@
   margin: 0px 5px 0px 5px;
   background-color: #37a6a6;
   color: white;
-
 }
-.filtro--active button:hover{
+
+.filtro--active button:hover {
   background-color: #217e7e;
 }

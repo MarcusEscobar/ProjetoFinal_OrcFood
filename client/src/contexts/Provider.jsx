@@ -9,13 +9,11 @@ function Provider({ children }) {
   const [isCartVisible, setIsCartVisible] = useState(false);
 
   useEffect(() => {
-    const itens = JSON.parse(localStorage.getItem('cartItems'))
-    if(itens){
-      setCartItems(itens.cartItems)
+    const itens = JSON.parse(localStorage.getItem("cartItems"));
+    if (itens) {
+      setCartItems(itens.cartItems);
     }
-    
   }, []);
-
 
   const value = {
     products,

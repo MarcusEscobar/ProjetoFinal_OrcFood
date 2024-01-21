@@ -1,12 +1,10 @@
 import React from "react";
-import "./Roleta.css"
+import "./Roleta.css";
 
-const PedacoRoleta = ({roletaValue}) => {
+const PedacoRoleta = ({ roletaValue }) => {
   return (
     <li className="pedacoRoleta">
-      <div className="text">
-        {roletaValue}
-      </div>
+      <div className="text">{roletaValue}</div>
     </li>
   );
 };
