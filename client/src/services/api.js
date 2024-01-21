@@ -25,9 +25,9 @@ export const createUser = async (name, endereco, email, password) => {
   });
 };
 
-export const updateUser = async (id, name, endereço, email, password, scope, moedas, tickets, c10, c20, c30) => {
+export const updateUser = async (id, name, endereco, email, password, scope, moedas, tickets, c10, c20, c30) => {
   const url = `/users/${id}`;
-  return api.put(url, { name, endereço, email, password, scope,moedas, tickets, c10, c20, c30 })
+  return api.put(url, { name, endereco, email, password, scope,moedas, tickets, c10, c20, c30 })
 } 
 
 export const getItens = async (query) => {

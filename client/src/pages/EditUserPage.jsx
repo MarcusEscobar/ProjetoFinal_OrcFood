@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 
 function EditUserPage() {
     const {user, login, logout } = useContext(AuthContext)
-    console.log(user.cupons.c10)
+    console.log(user)
 
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState(user.password);
