@@ -92,7 +92,7 @@ header .icone_hamburguer {
   header h2, header ul {
     display: none;
   }
-  header svg {
+  header .icone_hamburguer {
     display: inline;
   }
 
