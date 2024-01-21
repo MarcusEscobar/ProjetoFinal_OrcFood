@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../services/api";
 import "./Roleta.css";
 
 import PedacoRoleta from "./PedacoRoleta";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
 
-  const navigate = useNavigate();
   console.log(user);
   console.log("id", user.id);
   console.log('moedas', user.moedas);
@@ -50,22 +49,22 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
     const graus = ((rotation % 360) + 360) % 360;
     if (graus >= 0 && graus <= 59) {
       setPremio(p6);
-      setMoedas(moedas + 1);
+      setMoedas(moedas + 6);
     } else if (graus >= 60 && graus <= 119) {
       setPremio(p5);
-      setMoedas(moedas + 2);
+      setMoedas(moedas + 5);
     } else if (graus >= 120 && graus <= 179) {
       setPremio(p4);
-      setMoedas(moedas + 3);
+      setMoedas(moedas + 4);
     } else if (graus >= 180 && graus <= 239) {
       setPremio(p3);
-      setMoedas(moedas + 4);
+      setMoedas(moedas + 3);
     } else if (graus >= 240 && graus <= 299) {
       setPremio(p2);
-      setMoedas(moedas + 5);
+      setMoedas(moedas + 50);
     } else if (graus >= 300 && graus <= 359) {
       setPremio(p1);
-      setMoedas(moedas + 6);
+      setMoedas(moedas + 1);
     }
     console.log(user.id, moedas, tickets);
   };
@@ -84,7 +83,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
       console.log("UpdateNow");
       console.log(user);
       // localStorage.setItem('moedas', 0);
-      navigate('/');
+      // localStorage.setItem('user', user);
     } catch (err) {
       console.error(err);
     }
@@ -92,7 +91,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
 
   return (
     <div className="roleta_container">
-      {/* <div className="arrow"></div> */}
+      <BiSolidDownArrow />
       <ul
         className="circle"
         style={{
@@ -126,7 +125,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
           <p>Não há mais tickets disponíveis. Você possui {moedas} moedas.</p>
         )}
       </div>
-      <div className="central">^</div>
+      <div className="central"></div>
 
       {user.moedas ? (
         <div>
@@ -141,7 +140,7 @@ const Roleta = ({ p1, p2, p3, p4, p5, p6, user }) => {
         <></>
       )}
 
-      {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={handleUpdateEconomy}>Coletar recompensa e voltar.</button>}
+      {tickets === 0 && situacao === 0 && <button className="gift_btn" onClick={handleUpdateEconomy}>Coletar recompensa!</button>}
     </div>
   );
 };

@@ -28,7 +28,12 @@ export const createUser = async (name, endereco, email, password) => {
 export const updateUser = async (id, name, endereco, email, password, scope, moedas, tickets, c10, c20, c30) => {
   const url = `/users/${id}`;
   return api.put(url, { name, endereco, email, password, scope,moedas, tickets, c10, c20, c30 })
-} 
+}
+
+export const updateUserEconomy = async (id, moedas, tickets, c10, c20, c30) => {
+  const url = `/user_economy/${id}`;
+  return api.put(url, { moedas, tickets, c10, c20, c30 });
+}
 
 export const getItens = async (query) => {
   let url = "/cardapio/";

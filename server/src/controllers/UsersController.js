@@ -108,7 +108,35 @@ class UsersController {
 
       return res.status(200).json();
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error." });
+    }
+  }
+
+  async updateEconomy(req, res) {
+    try {
+      const { id } = req.params;
+      const { moedas, tickets, c10, c20, c30 } = req.body;
+
+      const user = await User.findById(id);
+
+      if (!user) {
+        return res.status(404).json();
+      }
+
+        await user.updateOne({
+          moedas,
+          tickets,
+          cupons: {
+            c10,
+            c20,
+            c30,
+          },
+        });
+
+        return res.status(200).json();
+    } catch (err) {
+      console.error(err);
       return res.status(500).json({ error: "Internal server error." });
     }
   }

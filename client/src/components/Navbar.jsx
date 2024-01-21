@@ -11,9 +11,6 @@ const Navbar = (pedidos) => {
   const { user, logout} = useContext(AuthContext)
   const { setCartItems } = useContext(AppContext)
 
-
-  
-
   const handleLogout = () => {
     localStorage.setItem('cartItems', JSON.stringify({cartItems:[]}))
     setCartItems([])
@@ -30,7 +27,7 @@ const Navbar = (pedidos) => {
         <ul>
             <CartButton/>
             <li>
-              {pedidos.pedidos?
+              {pedidos.pedidos? 
               <><button className='logout-btn' type="button" onClick={()=>{navigate('/')}}>Home</button></> 
               :<><button className='logout-btn' type="button" onClick={()=>{navigate('/pedidos')}}>Pedidos</button></>}
             </li>

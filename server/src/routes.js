@@ -17,6 +17,7 @@ routes.use(auth)
 routes.get('/users', UsersController.index);
 routes.get('/users/:id', UsersController.show);
 routes.put('/users/:id', UsersController.update);
+routes.put('/user_economy/:id', UsersController.updateEconomy);
 routes.delete('/users/:id', UsersController.destroy);
 
 routes.get('/cardapio', CardapioController.index);
