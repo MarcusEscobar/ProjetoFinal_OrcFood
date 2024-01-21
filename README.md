@@ -7,6 +7,26 @@ Com o node instalado entre na pasta ProjetoFinal_OrcFood, dentro dela haverá ou
 ~~~~
 cd client
 ~~~~
+Depois utilize o node para instalar as dependencias do cliente. Execulte o comando:
+~~~~
+npm install
+~~~~
+Isso fará que as dependencias do frontend sejam baixadas, como o React, Axios entre outras dependencias.
+
+Com as dependencias do frontend instaladas com sucesso vamos então configurar o backend.
+Volte a pasta ProjetoFinal_OrcFood e depois entre na pasta server
+~~~~
+cd ..
+~~~~
+~~~~
+cd server
+~~~~
+Depois instale as dependencias. Execute o comando:
+~~~~
+npm install
+~~~~
+
+
 
 
 
