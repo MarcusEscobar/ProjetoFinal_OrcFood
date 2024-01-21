@@ -135,7 +135,11 @@ function Cart() {
             }}
           >
             <option value={0}>sem desconto</option>
+<<<<<<< Updated upstream
             {c10 && <option value={10}>10% de desconto  (x{c10})</option>}
+=======
+            {c10 && <option value={10}>10% de desconto (x{c10})</option>}
+>>>>>>> Stashed changes
             {c20 && <option value={20}>20% de desconto (x{c20})</option>}
             {c30 && <option value={30}>30% de desconto (x{c30})</option>}
           </select>

@@ -11,7 +11,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 700px;
+    min-width: 300px;
+    max-width: 700px;
     height: 200px;
     padding: 25px;
     border-radius: 50px;
@@ -27,7 +28,8 @@
     justify-content: space-evenly;
     box-shadow: 4px 4px 20px#aaaa;
     padding: 10px;
-    width: 450px;
+    min-width: 300px;
+    max-width: 450px;
     height: 150px;
     border-radius: 40px;
     font-size: 17px;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 
@@ -6,17 +6,26 @@ import CartButton from "../Cartbutton/CartButton";
 import AppContext from "../../contexts/AppContext";
 import "./Navbar.css";
 import Cart from "../Cart/Cart";
+import NavbarMenu from "./NavbarMenu";
+
+import { FcMenu } from "react-icons/fc";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
   const { setCartItems } = useContext(AppContext);
 
+  const [menuActive, setMenuActive] = useState(false);
+
   const handleLogout = () => {
     localStorage.setItem("cartItems", JSON.stringify({ cartItems: [] }));
     setCartItems([]);
     logout();
   };
+
+  const toggleMenuActive = () => {
+    setMenuActive(!menuActive);
+  }
 
   return (
     <div>
@@ -58,7 +67,8 @@ const Navbar = () => {
           </button>
         </li>
       </ul>
-      
+      <FcMenu onClick={toggleMenuActive} />
+      {menuActive ? <NavbarMenu user={user} onLogout={handleLogout} /> : <></>}
     </header>
     <Cart />
     </div>
