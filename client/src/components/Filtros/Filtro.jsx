@@ -8,37 +8,46 @@ function Filtro({ isFiltroVisible, filtraCategory, filtraPrice, filtraServe, set
 
   return (
     <div className={`filtro ${isFiltroVisible ? "filtro--active" : ""}`}>
-      <button onClick={() => setFiltro(false)}>Desfiltrar</button>
-      <button onClick={() => filtraCategory("Entrada")}>
-        Filtrar por Entradas
-      </button>
-      <button onClick={() => filtraCategory("Prato principal")}>
-        Filtrar por Pratos principais
-      </button>
-      <button onClick={() => filtraCategory("Sobremesa")}>
-        Filtrar por Sobremesas
-      </button>
-      <button onClick={() => filtraCategory("Bebida")}>
-        Filtrar por Bebidas
-      </button>
-      <input
-        type="number"
-        onChange={(e) => {
-          setPreco(e.target.value);
-        }}
-      />
-      <button onClick={() => filtraPrice(preco)} className="btnPedidos">
-        enviar
-      </button>
-      <input
-        type="number"
-        onChange={(e) => {
-          setPessoas(e.target.value);
-        }}
-      />
-      <button onClick={() => filtraServe(pessoas)} className="btnPedidos">
-        enviar
-      </button>
+      <div className="contaiderButtons">
+        <button onClick={() => filtraCategory("Entrada")}>
+          Entradas
+        </button>
+        <button onClick={() => filtraCategory("Prato principal")}>
+          Pratos principais
+        </button>
+        <button onClick={() => filtraCategory("Sobremesa")}>
+          Sobremesas
+        </button>
+        <button onClick={() => filtraCategory("Bebida")}>
+          Bebidas
+        </button>
+        <button onClick={() => setFiltro(false)}>Todos</button>
+      </div>
+
+      <div>
+        <input
+          placeholder="Filtar por preço máximo"
+          type="number"
+          onChange={(e) => {
+            setPreco(e.target.value);
+          }}
+        />
+        <button onClick={() => filtraPrice(preco)} className="btnPedidos">
+        Buscar
+        </button>
+      </div>
+      <div>
+        <input
+          placeholder="Para Quantos?"
+          type="number"
+          onChange={(e) => {
+            setPessoas(e.target.value);
+          }}
+        />
+        <button onClick={() => filtraServe(pessoas)} className="btnPedidos">
+        Buscar
+        </button>
+      </div>
     </div>
   );
 }

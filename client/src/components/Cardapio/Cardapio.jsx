@@ -14,7 +14,7 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
 
   const [filtrado, setFiltrado] = useState([]);
   const [filtro, setFiltro] = useState(false);
-  const [isFiltroVisible, setIsFiltroVisible] = useState(true)
+  const [isFiltroVisible, setIsFiltroVisible] = useState(false)
 
   const handleFiltragemCategory = (filtro) => {
     setFiltrado(cardapio.filter((elemento) => elemento.category === filtro));
@@ -48,7 +48,7 @@ const Cardapio = ({ cardapio, onLoadData, query, onDeleteItem }) => {
         )}
       </div>
 
-      <button onClick={() => setIsFiltroVisible(!isFiltroVisible)}>Opções de filtragem</button>
+      <button onClick={() => setIsFiltroVisible(!isFiltroVisible)} className="btn_filtro" >Filtrar</button>
       <Filtro
         filtraCategory={handleFiltragemCategory}
         filtraPrice={handleFiltragemPreco}

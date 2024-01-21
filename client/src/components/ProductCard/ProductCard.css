@@ -4,8 +4,9 @@
   background-color: #f1eeee;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0px auto;
   position: relative;
+  box-shadow: 4px 4px 20px#aaaa;
 }
 
 .card__image {

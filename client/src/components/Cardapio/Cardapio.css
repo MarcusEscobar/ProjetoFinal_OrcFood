@@ -72,3 +72,21 @@
   font-weight: bold;
   transition: 0.2s;
 }
+
+.btn_filtro{
+  align-self: center;
+  width: 100px;
+  height: 30px;
+  border: none ;
+  border-radius: 15px;
+  display: block;
+  background-color: #8c2016;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px 0px 15px 0px;
+}
+
+.btn_filtro:hover {
+  background-color: #52130e;
+}
