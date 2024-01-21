@@ -39,7 +39,7 @@ const Navbar = () => {
         Olá, <span onClick={()=>{navigate('/user')}} >{user.name}!</span>
       </h2>
       <ul>
-        <CartButton />
+        <CartButton className='icone_carrinho'/>
         <li>
           <button
           className="logout-btn"
