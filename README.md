@@ -59,7 +59,7 @@ npm run dev
 
 ## Funcionalidades da aplicação
 
-### Recursos para Clientes:
+## Recursos para Clientes:
 
 ### Exploração do Cardápio: Os clientes podem visualizar todos os produtos disponíveis, ler descrições detalhadas e selecionar itens para compra.
 
@@ -75,7 +75,8 @@ npm run dev
 
 ### Cadastro: Os clientes podem se cadastrar na aplicação assim tendo acesso a todas as outras funcionalidades.
 
-### Recursos para Administradores:
+
+## Recursos para Administradores:
 
 Gestão do Cardápio: Os administradores têm o controle total sobre o cardápio, podendo adicionar ou remover produtos conforme necessário.
 Customização da Roleta: Ajuste os prêmios disponíveis na roleta para manter a experiência sempre interessante.
