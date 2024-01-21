@@ -33,9 +33,9 @@ function Cart() {
         user.id,
         user.moedas,
         ticket+1,
-        user.cupons.c10,
-        user.cupons.c20,
-        user.cupons.c30
+        c10,
+        c20,
+        c30
       );
     }
     if (parseInt(cupom) === 10) {
@@ -43,35 +43,35 @@ function Cart() {
       const response = await updateUserEconomy(
         user.id,
         user.moedas,
-        user.tickets+1,
+        ticket+1,
         newC10,
-        user.cupons.c20,
-        user.cupons.c30
+        c20,
+        c30
       );
       localStorage.setItem("c10", newC10);
       
     }
-    if (cupom === 20) {
+    if (parseInt(cupom) === 20) {
       const newC20 = c20 - 1;
       const response = await updateUserEconomy(
         user.id,
         user.moedas,
-        user.tickets+1,
-        user.cupons.c10,
+        ticket+1,
+        c10,
         newC20,
-        user.cupons.c30
+        c30
       );
       localStorage.setItem("c20", newC20);
       
     }
-    if (cupom === 30) {
+    if (parseInt(cupom) === 30) {
       const newC30 = c30 - 1;
       const response = await updateUserEconomy(
         user.id,
         user.moedas,
         user.tickets+1,
-        user.cupons.c10,
-        user.cupons.c20,
+        c10,
+        c20,
         newC30
       );
       localStorage.setItem("c30", newC30);
