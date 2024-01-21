@@ -18,6 +18,7 @@ function Cart() {
   const c10 = parseInt(localStorage.getItem("c10"));
   const c20 = parseInt(localStorage.getItem("c20"));
   const c30 = parseInt(localStorage.getItem("c30"));
+  const ticket = parseInt(localStorage.getItem("tickets"))
 
   const totalPrice = cartItems.reduce((acc, item) => {
     return parseFloat(item.item.price * item.quatidade) + acc;
@@ -26,42 +27,55 @@ function Cart() {
   const priceDesconto = totalPrice - totalPrice * (cupom / 100);
 
   const removerCupom = async () => {
-
+    localStorage.setItem("tickets", ticket+1);
+    if(parseInt(cupom) === 0){
+      const response = await updateUserEconomy(
+        user.id,
+        user.moedas,
+        ticket+1,
+        user.cupons.c10,
+        user.cupons.c20,
+        user.cupons.c30
+      );
+    }
     if (parseInt(cupom) === 10) {
       const newC10 = c10 - 1;
       const response = await updateUserEconomy(
         user.id,
         user.moedas,
-        user.tickets,
+        user.tickets+1,
         newC10,
         user.cupons.c20,
         user.cupons.c30
       );
       localStorage.setItem("c10", newC10);
+      
     }
     if (cupom === 20) {
       const newC20 = c20 - 1;
       const response = await updateUserEconomy(
         user.id,
         user.moedas,
-        user.tickets,
+        user.tickets+1,
         user.cupons.c10,
         newC20,
         user.cupons.c30
       );
       localStorage.setItem("c20", newC20);
+      
     }
     if (cupom === 30) {
       const newC30 = c30 - 1;
       const response = await updateUserEconomy(
         user.id,
         user.moedas,
-        user.tickets,
+        user.tickets+1,
         user.cupons.c10,
         user.cupons.c20,
         newC30
       );
       localStorage.setItem("c30", newC30);
+      
     }
   };
 
@@ -70,6 +84,7 @@ function Cart() {
       toast.error("Carrinho vazio", { position: "bottom-center" });
     } else {
       toast.success("Pedido finalizado", { position: "bottom-center" });
+      toast.success("Você ganhou 1 Ticket", { position: "bottom-center" });
       await createPedido(user.id, user, cartItems, "Pendente");
       localStorage.setItem("cartItems", JSON.stringify({ cartItems: [] }));
       setCartItems([]);
