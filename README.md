@@ -46,6 +46,17 @@ cd server
 npm run dev
 ~~~~
 
+E para rodar o frontent utilize:
+~~~~
+cd ..
+~~~~
+~~~~
+cd client
+~~~~
+~~~~
+npm run dev
+~~~~
+
 
 
 
