@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { updatePedido } from "../../services/api";
 import { AuthContext } from "../../contexts/auth";
 
+import formatCurrency from "../../../utils/formatCurrency";
 import "./Pedido.css";
 
 function Pedido(item, index) {
@@ -33,6 +34,10 @@ function Pedido(item, index) {
     setNewStatus("Cancelado");
   };
 
+  const totalPrice = pedidos.reduce((acc, item) => {
+    return parseFloat(item.item.price * item.quatidade) + acc;
+  }, 0.0);
+
   return (
     <tr>
       <td>
@@ -40,6 +45,7 @@ function Pedido(item, index) {
       </td>
       <td>
         <div className="listaPedidos">
+          {`Total: ${formatCurrency(totalPrice, "BRL")}`}
           {pedidos.map((e, index) => {
             return (
               <p key={index}>
