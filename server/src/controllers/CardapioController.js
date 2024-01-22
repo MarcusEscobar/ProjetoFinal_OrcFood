@@ -9,7 +9,7 @@ class CardapioController {
       let query = {};
 
       if (q) {
-        query = { name: { $regex: q } }
+        query = { name: { $regex: new RegExp(q, "i") } }
       }
       const cardapio = await Item.find({
         ...query}
